@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Technical Services — Software, AI Automation, Cybersecurity, Data and Delivery</title>
+<meta name="description" content="Five technical practices for companies that need senior execution without hiring a full team. Every engagement states what is included, what is excluded, and what you receive.">
+
+<!--
+  CSP de defensa en profundidad. La autoritativa va en cabecera HTTP (ver _headers):
+  frame-ancestors se IGNORA dentro de <meta>. Sin 'unsafe-inline' porque CSS y JS
+  viven en archivos propios y no hay ni un handler inline en el HTML.
+-->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0E2439">
+
+<!-- Iconos. El navegador pide /favicon.ico solo, sin que nadie se lo diga:
+     por eso, sin archivo, aparece un 404 en la consola. Los <link> hacen el resto:
+     el SVG lo prefieren los navegadores modernos, el ICO es el respaldo. -->
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Verificación de Google Search Console. Descomenta y pega el token que te da
+     Google al verificar el dominio. Alternativa: registro TXT en tu DNS, que no
+     toca este archivo y sobrevive a cualquier rediseño. -->
+<!-- <meta name="google-site-verification" content="PEGA-AQUI-TU-TOKEN"> -->
+
+<link rel="canonical" href="https://tu-dominio.com/">
+<link rel="alternate" hreflang="en" href="https://tu-dominio.com/">
+<link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Technical Services — five practices, one written scope">
+<meta property="og:description" content="Software engineering, AI automation, cybersecurity, data and technical delivery. Start with a two-week assessment.">
+<meta property="og:url" content="https://tu-dominio.com/">
+<meta property="og:image" content="https://tu-dominio.com/og/home.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="monogram">TS</span><span>Technical Transformation Studio</span></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
+    <nav class="mainnav" id="mainnav">
+      <a href="#practices" data-i18n="nav.practices">Practices</a>
+      <a href="/work/" data-i18n="nav.work">Case studies</a>
+      <a href="/about/" data-i18n="nav.about">About</a>
+      <a href="#cost" data-i18n="nav.cost">Cost</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <label class="skip" for="langSelect" data-i18n="lang.label">Language</label>
+      <select class="langpick" id="langSelect" hidden></select>
+      <a class="cta-sm" href="#contact" data-i18n="nav.cta">Book an assessment</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="kicker" data-i18n="hero.kicker">Services · Scope · Boundaries</p>
+      <h1><span data-i18n="hero.h1a">Technical work, delivered under a</span> <em data-i18n="hero.h1b">written scope.</em></h1>
+      <p class="deck" data-i18n="hero.deck">Five practices for companies that need senior technical execution without hiring a full team. Every engagement states what is included, what is excluded, and what you receive at the end.</p>
+      <div class="btnrow">
+        <a class="btn btn-fill" href="#contact" data-i18n="hero.cta1">Book a technical assessment</a>
+        <a class="btn btn-line" href="#practices" data-i18n="hero.cta2">Read the practices</a>
+      </div>
+    </div>
+    <div class="filecard">
+      <h2 data-i18n="file.head">Standard engagement record</h2>
+      <dl>
+        <div class="filerow"><dt data-i18n="file.k1">Entry point</dt><dd data-i18n="file.v1">Technical assessment</dd></div>
+        <div class="filerow"><dt data-i18n="file.k2">Duration</dt><dd data-i18n="file.v2">2 weeks</dd></div>
+        <div class="filerow"><dt data-i18n="file.k3">You receive</dt><dd data-i18n="file.v3">Findings + roadmap</dd></div>
+        <div class="filerow"><dt data-i18n="file.k4">Commitment after</dt><dd data-i18n="file.v4">None</dd></div>
+        <div class="filerow"><dt data-i18n="file.k5">Working languages</dt><dd>EN / ES</dd></div>
+      </dl>
+      <p class="stamp" data-i18n="file.stamp">Scope agreed in writing before work begins.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="practices">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="pr.kicker">Five practices</p>
+      <h2 class="sect" data-i18n="pr.h2">One technical partner. Five capabilities, equally weighted.</h2>
+      <p data-i18n="pr.intro">We combine engineering, business analysis and technical program leadership instead of handing every problem to a different vendor. Each practice below states its limits up front.</p>
+    </div>
+
+    <article class="practice">
+      <div class="pnum">01</div>
+      <div>
+        <h3 class="ptitle" data-i18n="p1.t">Software Engineering</h3>
+        <p class="pdesc" data-i18n="p1.d">Internal tools, APIs, dashboards and business applications built to a fixed scope and handed over with source code and documentation — built to be maintained by your team, not to create dependency.</p>
+        <div class="ledger">
+          <div class="in"><h4 data-i18n="ledger.in">Included</h4><ul>
+            <li data-i18n="p1.i1">Internal tools, business applications and admin panels</li>
+            <li data-i18n="p1.i2">APIs, integrations and workflow systems</li>
+            <li data-i18n="p1.i3">Databases: design, migration and performance</li>
+            <li data-i18n="p1.i4">Source code, documentation and a handover session</li>
+          </ul></div>
+          <div class="out"><h4 data-i18n="ledger.out">Not included</h4><ul>
+            <li data-i18n="p1.o1">Consumer mobile applications</li>
+            <li data-i18n="p1.o2">24/7 production on-call unless retained</li>
+            <li data-i18n="p1.o3">Hardware or embedded firmware</li>
+          </ul></div>
+        </div>
+        <div class="pmeta">
+          <div><span data-i18n="meta.shape">Typical shape</span><strong data-i18n="p1.m1">Fixed-scope MVP</strong></div>
+          <div><span data-i18n="meta.ramp">Ramp</span><strong data-i18n="p1.m2">3–8 weeks</strong></div>
+          <div><span data-i18n="meta.fit">Best for</span><strong data-i18n="p1.m3">Processes that outgrew spreadsheets</strong></div>
+        </div>
+        <a class="plink" href="/services/software-engineering/" data-i18n="p1.c">Scope a build →</a>
+      </div>
+    </article>
+
+    <article class="practice">
+      <div class="pnum">02</div>
+      <div>
+        <h3 class="ptitle" data-i18n="p2.t">AI &amp; Automation</h3>
+        <p class="pdesc" data-i18n="p2.d">Agentic assistants and automated reporting over your own data, with outputs you can trace back to the numbers that produced them — because a figure nobody can verify is worse than no figure at all.</p>
+        <div class="ledger">
+          <div class="in"><h4 data-i18n="ledger.in">Included</h4><ul>
+            <li data-i18n="p2.i1">Agentic AI assistants over your own data</li>
+            <li data-i18n="p2.i2">Reporting automation: Excel/CSV → analysis → Word/PDF</li>
+            <li data-i18n="p2.i3">Document processing and knowledge systems</li>
+            <li data-i18n="p2.i4">Validation so every figure stays traceable</li>
+          </ul></div>
+          <div class="out"><h4 data-i18n="ledger.out">Not included</h4><ul>
+            <li data-i18n="p2.o1">Training foundation models from scratch</li>
+            <li data-i18n="p2.o2">Reselling model licences or credits</li>
+            <li data-i18n="p2.o3">Autonomous decisions with no human review</li>
+          </ul></div>
+        </div>
+        <div class="pmeta">
+          <div><span data-i18n="meta.shape">Typical shape</span><strong data-i18n="p2.m1">Automation sprint</strong></div>
+          <div><span data-i18n="meta.ramp">Ramp</span><strong data-i18n="p2.m2">3–6 weeks</strong></div>
+          <div><span data-i18n="meta.fit">Best for</span><strong data-i18n="p2.m3">Repeated manual work</strong></div>
+        </div>
+        <a class="plink" href="/services/ai-automation/" data-i18n="p2.c">Automate a process →</a>
+      </div>
+    </article>
+
+    <article class="practice">
+      <div class="pnum">03</div>
+      <div>
+        <h3 class="ptitle" data-i18n="p3.t">Cybersecurity</h3>
+        <p class="pdesc" data-i18n="p3.d">External exposure discovery, scoped web application penetration testing and a risk governance plan your leadership can actually run — visibility of what you already expose, evidence of what an attacker could do with it, and a plan with owners and dates attached.</p>
+        <div class="ledger">
+          <div class="in"><h4 data-i18n="ledger.in">Included</h4><ul>
+            <li data-i18n="p3.i1">External asset, domain, DNS and certificate discovery</li>
+            <li data-i18n="p3.i2">Scoped web application penetration testing, under written authorisation</li>
+            <li data-i18n="p3.i3">Vulnerability analysis, severity triage and a mitigation plan with owners</li>
+            <li data-i18n="p3.i4">Monitoring, alerting and executive reporting</li>
+          </ul></div>
+          <div class="out"><h4 data-i18n="ledger.out">Not included</h4><ul>
+            <li data-i18n="p3.o1">Full-scope red-team, social engineering and physical intrusion</li>
+            <li data-i18n="p3.o2">Certified regulatory audits (ISO 27001, SOC 2)</li>
+            <li data-i18n="p3.o3">24/7 staffed incident response</li>
+          </ul></div>
+        </div>
+        <div class="pmeta">
+          <div><span data-i18n="meta.shape">Typical shape</span><strong data-i18n="p3.m1">Assessment + retainer</strong></div>
+          <div><span data-i18n="meta.ramp">Ramp</span><strong data-i18n="p3.m2">2–3 weeks</strong></div>
+          <div><span data-i18n="meta.fit">Best for</span><strong data-i18n="p3.m3">Companies without an in-house SOC</strong></div>
+        </div>
+        <a class="plink" href="/services/cybersecurity/" data-i18n="p3.c">Map your exposure →</a>
+      </div>
+    </article>
+
+    <article class="practice">
+      <div class="pnum">04</div>
+      <div>
+        <h3 class="ptitle" data-i18n="p4.t">Data &amp; Analytics</h3>
+        <p class="pdesc" data-i18n="p4.d">Reporting workflows, dashboards and operational analysis that turn scattered exports into numbers someone is willing to sign — with the metric definitions agreed before the first chart is drawn.</p>
+        <div class="ledger">
+          <div class="in"><h4 data-i18n="ledger.in">Included</h4><ul>
+            <li data-i18n="p4.i1">Data pipelines, cleaning and consolidation</li>
+            <li data-i18n="p4.i2">Operational dashboards and scheduled reporting</li>
+            <li data-i18n="p4.i3">Metric definitions agreed with the business</li>
+            <li data-i18n="p4.i4">Analysis delivered with the queries behind it</li>
+          </ul></div>
+          <div class="out"><h4 data-i18n="ledger.out">Not included</h4><ul>
+            <li data-i18n="p4.o1">Enterprise data-warehouse migrations</li>
+            <li data-i18n="p4.o2">Buying or brokering third-party data</li>
+            <li data-i18n="p4.o3">Conclusions the sample size cannot support</li>
+          </ul></div>
+        </div>
+        <div class="pmeta">
+          <div><span data-i18n="meta.shape">Typical shape</span><strong data-i18n="p4.m1">Fixed-scope build</strong></div>
+          <div><span data-i18n="meta.ramp">Ramp</span><strong data-i18n="p4.m2">3–6 weeks</strong></div>
+          <div><span data-i18n="meta.fit">Best for</span><strong data-i18n="p4.m3">Teams reconciling numbers by hand</strong></div>
+        </div>
+        <a class="plink" href="/services/data-analytics/" data-i18n="p4.c">Improve your reporting →</a>
+      </div>
+    </article>
+
+    <article class="practice">
+      <div class="pnum">05</div>
+      <div>
+        <h3 class="ptitle" data-i18n="p5.t">Technical Delivery &amp; Account Leadership</h3>
+        <p class="pdesc" data-i18n="p5.d">The person who sits between your engineering team and your customers: roadmaps, vendors, escalations and executive reporting, in language a leadership committee acts on rather than forwards.</p>
+        <div class="ledger">
+          <div class="in"><h4 data-i18n="ledger.in">Included</h4><ul>
+            <li data-i18n="p5.i1">Roadmaps, delivery planning and risk management</li>
+            <li data-i18n="p5.i2">Vendor and engineering coordination</li>
+            <li data-i18n="p5.i3">Escalation handling for enterprise accounts</li>
+            <li data-i18n="p5.i4">Quarterly reviews and executive reporting</li>
+          </ul></div>
+          <div class="out"><h4 data-i18n="ledger.out">Not included</h4><ul>
+            <li data-i18n="p5.o1">Quota-carrying new-business sales</li>
+            <li data-i18n="p5.o2">Tier-1 support staffing</li>
+            <li data-i18n="p5.o3">Contract and legal negotiation</li>
+          </ul></div>
+        </div>
+        <div class="pmeta">
+          <div><span data-i18n="meta.shape">Typical shape</span><strong data-i18n="p5.m1">Monthly retainer</strong></div>
+          <div><span data-i18n="meta.ramp">Ramp</span><strong data-i18n="p5.m2">2–4 weeks</strong></div>
+          <div><span data-i18n="meta.fit">Best for</span><strong data-i18n="p5.m3">Teams delivering without a technical owner</strong></div>
+        </div>
+        <a class="plink" href="/services/technical-delivery/" data-i18n="p5.c">Bring technical leadership →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="calc" id="cost">
+  <div class="wrap">
+    <p class="kicker gold" data-i18n="calc.kicker">The cost of leaving it</p>
+    <h2 class="sect" data-i18n="calc.h2">Manual work is not free. It is just invoiced as salary.</h2>
+    <p class="calclead" data-i18n="calc.lead">Move the sliders to your reality. The figure on the right is what the manual version costs you every year, before anyone has automated anything.</p>
+    <div class="calcgrid">
+      <div class="fields">
+        <div class="field">
+          <label for="people" data-i18n="calc.f1">People doing the manual work</label>
+          <input type="range" id="people" min="1" max="30" step="1" value="4">
+          <output class="val" id="peopleOut" for="people">4</output>
+        </div>
+        <div class="field">
+          <label for="hours" data-i18n="calc.f2">Hours per person, per week</label>
+          <input type="range" id="hours" min="1" max="30" step="1" value="6">
+          <output class="val" id="hoursOut" for="hours">6</output>
+        </div>
+        <div class="field">
+          <label for="rate" id="rateLabel" data-i18n="calc.f3">Fully loaded cost per hour (USD)</label>
+          <input type="range" id="rate" min="5" max="120" step="1" value="25">
+          <output class="val" id="rateOut" for="rate">USD 25</output>
+        </div>
+      </div>
+      <div class="readout">
+        <p class="rl" data-i18n="calc.readout">Annual cost of the manual process</p>
+        <p class="rn" id="calcTotal">USD 28,800</p>
+        <p class="rh" id="calcHours">1,152 hours a year</p>
+      </div>
+    </div>
+    <p class="disclaim" data-i18n="calc.note">Rough arithmetic — people × hours × rate × 48 working weeks. It is an order of magnitude, not a quote. Nothing you type here leaves your browser.</p>
+  </div>
+</section>
+
+<section class="band" id="engagements">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="lad.kicker">How to start</p>
+      <h2 class="sect" data-i18n="lad.h2">Small first, then bigger — never the other way round.</h2>
+      <p data-i18n="lad.intro">Most clients begin with an assessment because it is the cheapest way to find out whether we are useful to each other.</p>
+    </div>
+    <div class="ladder">
+      <div class="step"><b>01</b><h3 data-i18n="lad.1t">Assessment</h3><p data-i18n="lad.1d">Two weeks. Findings, options and a roadmap you own whether or not we continue.</p><div class="band-price" data-i18n="lad.1p">from USD 500</div></div>
+      <div class="step"><b>02</b><h3 data-i18n="lad.2t">MVP</h3><p data-i18n="lad.2d">One painful process, automated or built, delivered working.</p><div class="band-price" data-i18n="lad.2p">from USD 2,000</div></div>
+      <div class="step"><b>03</b><h3 data-i18n="lad.3t">Implementation</h3><p data-i18n="lad.3d">The full system: integrations, security controls, deployment, documentation.</p><div class="band-price" data-i18n="lad.3p">from USD 5,000</div></div>
+      <div class="step"><b>04</b><h3 data-i18n="lad.4t">Retainer</h3><p data-i18n="lad.4d">Ongoing technical leadership, monitoring and improvement.</p><div class="band-price" data-i18n="lad.4p">from USD 1,000/mo</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="proof">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="proof.kicker">Evidence</p>
+      <h2 class="sect" data-i18n="proof.h2">Systems that exist, not slides.</h2>
+    </div>
+    <div class="proof">
+      <article class="pcase"><span data-i18n="proof.1k">Business software</span><h3>GranelCo</h3><p data-i18n="proof.1d">Desktop business application for products sold by weight: inventory, sales and authentication in a single packaged app.</p><p class="headline-metric"><b data-i18n="proof.1n">3</b> <span data-i18n="proof.1nl">people using it daily</span></p><div class="tech">React · Vite · FastAPI · SQLAlchemy · SQLite · JWT · Tauri</div><a class="plink" href="/work/granelco/" data-i18n="proof.1a">Read the case →</a></article>
+      <article class="pcase"><span data-i18n="proof.2k">Security</span><h3>SOC Dashboard</h3><p data-i18n="proof.2d">Monitoring dashboard for external exposure: DNS visibility, service discovery, alerting and operational reporting.</p><p class="headline-metric"><b data-i18n="proof.2n">7</b> <span data-i18n="proof.2nl">hidden assets, down in 3 days</span></p><div class="tech">Flask · SQLite · DNS · Nmap · Alerting</div><a class="plink" href="/work/cg-legal-phishing/" data-i18n="proof.2a">Read the case →</a></article>
+      <article class="pcase"><span data-i18n="proof.3k">AI &amp; automation</span><h3>Reporting Automation</h3><p data-i18n="proof.3d">Weekly spreadsheets turned into analysis, anomaly detection and generated Word/PDF reports delivered on schedule.</p><p class="headline-metric"><b data-i18n="proof.3n">3</b> <span data-i18n="proof.3nl">h/week → 20 min</span></p><div class="tech">Python · Pandas · LLM analysis · Word/PDF</div><a class="plink" href="/work/reporting-engine/" data-i18n="proof.3a">Read the case →</a></article>
+      <article class="pcase"><span data-i18n="proof.4k">AI framework</span><h3>AAIF</h3><p data-i18n="proof.4d">A modular AI operating framework of skills, playbooks, decision trees and reviewers that keeps delivery quality consistent.</p><p class="headline-metric"><b data-i18n="proof.4n">18</b> <span data-i18n="proof.4nl">master skills</span></p><div class="tech">Skills · Playbooks · Reviewers · Quality gates</div><a class="plink" href="/work/aaif/" data-i18n="proof.4a">Read the case →</a></article>
+    </div>
+    <p class="section-outro"><a class="plink" href="/work/" data-i18n="proof.all">See all case studies →</a></p>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="faq.kicker">Questions</p>
+      <h2 class="sect" data-i18n="faq.h2">The ones that come up on every first call.</h2>
+    </div>
+    <div class="faq">
+      <details><summary data-i18n="faq.q1">Who actually does the work?</summary><p data-i18n="faq.a1">A senior technical consultant with delivery experience across software engineering, AI automation, defensive security, data analysis and program management. For larger builds a small vetted team is added, and you are told who is on it before work starts.</p></details>
+      <details><summary data-i18n="faq.q2">What happens after an assessment?</summary><p data-i18n="faq.a2">You keep the findings and the roadmap. There is no obligation to continue, and the roadmap is written so another provider could execute it.</p></details>
+      <details><summary data-i18n="faq.q3">Can you work alongside our existing IT provider?</summary><p data-i18n="faq.a3">Yes. Most engagements run beside an internal team or an existing vendor. We define who owns what at the start, so there is no overlap and no gap.</p></details>
+      <details><summary data-i18n="faq.q4">Do you perform penetration testing?</summary><p data-i18n="faq.a4">Yes — scoped web application penetration testing, run by a certified Web Penetration Tester under written authorisation and agreed rules of engagement. What stays excluded is full-scope red-team work, social engineering and physical intrusion, which need a different team and a different contract. The scope is written and signed before anything is tested.</p></details>
+      <details><summary data-i18n="faq.q5">Do you work with companies outside Mexico?</summary><p data-i18n="faq.a5">Yes. Work is delivered remotely in English or Spanish, with overlap hours agreed at the start. Current focus is Mexico and Latin America, then the United States and Canada.</p></details>
+      <details><summary data-i18n="faq.q6">Who owns the code and the data?</summary><p data-i18n="faq.a6">You do. Source code, documentation and credentials are handed over at the end of the engagement, and any access we hold is revoked when the work closes.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div>
+      <p class="kicker gold" data-i18n="con.kicker">Start here</p>
+      <h2 class="sect" data-i18n="con.h2">Tell us what is broken, slow or expensive.</h2>
+      <div class="band-head"><p data-i18n="con.lead">Describe the problem in a few lines. You get a written reply with a first read on it, whether or not there is an engagement in it. The message is sent from this page — no email client, no third-party form service, no trackers.</p></div>
+    </div>
+
+    <!--
+      Funciona SIN JavaScript: method/action hacen un POST normal al backend.
+      Con JS, app.js lo intercepta y lo envía por fetch sin recargar.
+      Los <option> llevan value fijo en inglés: el idioma cambia solo la etiqueta
+      visible, nunca el valor que el backend valida contra su lista blanca.
+    -->
+    <form class="form" id="contactForm" method="post" action="/api/contact" novalidate>
+      <label><span data-i18n="form.company">Company</span><input name="company" required maxlength="120" autocomplete="organization" data-i18n-ph="form.ph.company" placeholder="Your company"></label>
+      <label><span data-i18n="form.email">Work email</span><input type="email" name="email" required maxlength="254" autocomplete="email" data-i18n-ph="form.ph.email" placeholder="you@company.com"></label>
+      <label><span data-i18n="form.practice">Practice</span><select name="practice">
+        <option value="Software Engineering" data-i18n="form.o1">Software Engineering</option>
+        <option value="AI &amp; Automation" data-i18n="form.o2">AI &amp; Automation</option>
+        <option value="Cybersecurity" data-i18n="form.o3">Cybersecurity</option>
+        <option value="Data &amp; Analytics" data-i18n="form.o4">Data &amp; Analytics</option>
+        <option value="Technical Delivery" data-i18n="form.o5">Technical Delivery &amp; Account Leadership</option>
+        <option value="Not sure yet" data-i18n="form.o6">Not sure yet</option>
+      </select></label>
+      <label><span data-i18n="form.problem">The problem</span><textarea name="message" rows="5" required maxlength="4000" data-i18n-ph="form.ph.message" placeholder="What are you trying to fix, build or protect?"></textarea></label>
+
+      <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="rendered_at" id="renderedAt">
+
+      <button type="submit" id="submitBtn" data-i18n="form.send">Send the brief</button>
+      <p class="formstatus" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="formnote" data-i18n="form.note">We use your message to reply to you. Nothing else — no list, no third parties.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>
+      <a href="/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
+      <a href="/legal/terms/" data-i18n="footer.terms">Terms</a> ·
+      <span id="year"></span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"ProfessionalService","@id":"https://tu-dominio.com/#studio","name":"Technical Transformation Studio","description":"Software engineering, AI automation, cybersecurity, data analytics and technical delivery leadership for growing companies.","areaServed":["MX","LATAM","US","CA"],"availableLanguage":["en","es"],"address":{"@type":"PostalAddress","addressLocality":"Santiago de Querétaro","addressRegion":"Querétaro","addressCountry":"MX"},"url":"https://tu-dominio.com/"},
+{"@type":"Service","name":"Software Engineering","serviceType":"Custom software development","provider":{"@id":"https://tu-dominio.com/#studio"}},
+{"@type":"Service","name":"AI & Automation","serviceType":"Business process automation","provider":{"@id":"https://tu-dominio.com/#studio"}},
+{"@type":"Service","name":"Cybersecurity","serviceType":"Penetration testing and cybersecurity consulting","provider":{"@id":"https://tu-dominio.com/#studio"}},
+{"@type":"Service","name":"Data & Analytics","serviceType":"Data analytics consulting","provider":{"@id":"https://tu-dominio.com/#studio"}},
+{"@type":"Service","name":"Technical Delivery & Account Leadership","serviceType":"Technical program management","provider":{"@id":"https://tu-dominio.com/#studio"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Who actually does the work?","acceptedAnswer":{"@type":"Answer","text":"A senior technical consultant with delivery experience across software engineering, AI automation, defensive security, data analysis and program management."}},
+{"@type":"Question","name":"What happens after an assessment?","acceptedAnswer":{"@type":"Answer","text":"You keep the findings and the roadmap. There is no obligation to continue, and the roadmap is written so another provider could execute it."}},
+{"@type":"Question","name":"Do you perform penetration testing?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scoped web application penetration testing, run by a certified Web Penetration Tester under written authorisation and agreed rules of engagement. Full-scope red-team work, social engineering and physical intrusion are excluded."}},
+{"@type":"Question","name":"Who owns the code and the data?","acceptedAnswer":{"@type":"Answer","text":"The client does. Source code, documentation and credentials are handed over at the end of the engagement."}}
+]}]}
+</script>
+
+<script src="i18n.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://tu-dominio.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/services/software-engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/services/software-engineering/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/software-engineering/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/services/software-engineering/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/services/ai-automation/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/services/ai-automation/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/ai-automation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/services/ai-automation/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/services/cybersecurity/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/services/cybersecurity/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/cybersecurity/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/services/cybersecurity/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/services/data-analytics/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/services/data-analytics/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/data-analytics/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/services/data-analytics/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/services/technical-delivery/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/services/technical-delivery/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/technical-delivery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/services/technical-delivery/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/work/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/work/cg-legal-phishing/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/cg-legal-phishing/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/work/cg-legal-phishing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/cg-legal-phishing/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/work/attack-surface-automation/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/attack-surface-automation/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/work/attack-surface-automation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/attack-surface-automation/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/work/reporting-engine/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/reporting-engine/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/work/reporting-engine/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/reporting-engine/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/work/granelco/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/granelco/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/work/granelco/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/granelco/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tu-dominio.com/work/aaif/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/aaif/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/servicios/work/aaif/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/aaif/"/>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
