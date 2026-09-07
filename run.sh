@@ -56,7 +56,7 @@ fi
 if [ "$USE_VENV" = "1" ]; then
   # shellcheck disable=SC1091
   source "$VENV/bin/activate"
-  PY=python
+  PY=python3
 fi
 
 # --- 4. Dependencias ---------------------------------------------------------

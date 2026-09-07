@@ -9,7 +9,7 @@ con la calculadora en la moneda de cada idioma.
 ## Arrancar (un solo comando)
 
 ```bash
-cd /Users/antoniogarduno/Downloads/propuestas/posible_proyecto
+cd /Users/antoniogarduno/Documents/techStudio/techStudio
 bash run.sh
 ```
 
