@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-i18n-page="case-cg-legal-phishing">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phishing and Impersonation Takedown: Two Live Campaigns Stopped in Three Days | Technical Transformation Studio</title>
+<meta name="description" content="A law firm was being impersonated for over a month. One day of analysis found seven hidden assets behind a single domain; three days later the infrastructure was down.">
+
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0E2439">
+
+<!-- Iconos. El navegador pide /favicon.ico solo, sin que nadie se lo diga:
+     por eso, sin archivo, aparece un 404 en la consola. Los <link> hacen el resto:
+     el SVG lo prefieren los navegadores modernos, el ICO es el respaldo. -->
+<link rel="icon" href="/techStudio/favicon.ico" sizes="32x32">
+<link rel="icon" href="/techStudio/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/techStudio/apple-touch-icon.png">
+<link rel="manifest" href="/techStudio/site.webmanifest">
+
+<link rel="canonical" href="https://tu-dominio.com/work/cg-legal-phishing/">
+<link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/cg-legal-phishing/">
+<link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/casos/cg-legal-phishing/">
+<link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/cg-legal-phishing/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Phishing and Impersonation Takedown: Two Live Campaigns Stopped in Three Days">
+<meta property="og:description" content="A law firm was being impersonated for over a month. One day of analysis found seven hidden assets behind a single domain; three days later the infrastructure was down.">
+<meta property="og:url" content="https://tu-dominio.com/work/cg-legal-phishing/">
+<meta property="og:image" content="https://tu-dominio.com/og/case-cg-legal-phishing.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="/techStudio/styles.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="/techStudio/"><span class="monogram">TS</span><span>Technical Transformation Studio</span></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
+    <nav class="mainnav" id="mainnav">
+      <a href="/techStudio/#practices" data-i18n="nav.practices">Practices</a>
+      <a href="/techStudio/work/" data-i18n="nav.work">Case studies</a>
+      <a href="/techStudio/about/" data-i18n="nav.about">About</a>
+      <a href="/techStudio/#cost" data-i18n="nav.cost">Cost</a>
+      <a href="/techStudio/#faq" data-i18n="nav.faq">FAQ</a>
+      <label class="skip" for="langSelect" data-i18n="lang.label">Language</label>
+      <select class="langpick" id="langSelect" hidden></select>
+      <a class="cta-sm" href="#contact" data-i18n="nav.cta">Book an assessment</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/techStudio/" data-i18n="cs.crumbHome">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/techStudio/work/" data-i18n="cs.crumbWork">Case studies</a>
+        <span aria-hidden="true">/</span>
+        <span data-i18n="cs.crumbSelf">Phishing and Impersonation Takedown</span>
+      </nav>
+      <p class="kicker" data-i18n="cs.kicker">Cybersecurity · Named client</p>
+      <h1 data-i18n="cs.h1">A month of impersonation, ended in three days</h1>
+      <p class="deck" data-i18n="cs.deck">Two active phishing campaigns were running against a law firm&#x27;s client from a single impersonation domain. Nobody had found the infrastructure behind it. Analysis took one day; takedown took three.</p>
+      <div class="btnrow">
+        <a class="btn btn-fill" href="#contact" data-i18n="cs.cta1">Discuss a similar problem</a>
+        <a class="btn btn-line" href="/techStudio/services/cybersecurity/" data-i18n="cs.cta2">See the practice</a>
+      </div>
+    </div>
+    <div class="filecard">
+      <h2 data-i18n="cs.atAGlance">At a glance</h2>
+      <dl>
+        <div class="filerow"><dt data-i18n="cs.mk1">Client</dt><dd data-i18n="cs.mv1">CG Legal &amp; Real Estate</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk2">Practice</dt><dd data-i18n="cs.mv2">Cybersecurity</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk3">Analysis</dt><dd data-i18n="cs.mv3">1 day</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk4">Takedown</dt><dd data-i18n="cs.mv4">3 days</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk5">Exposure before</dt><dd data-i18n="cs.mv5">Over 1 month</dd></div>
+      </dl>
+      <p class="stamp" data-i18n="cs.stack">DNS · Certificate transparency · OSINT · Monitoring · Alerting</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="cs.sitKicker">The situation</p>
+      <h2 class="sect" data-i18n="cs.sitH">The attack had been running for over a month</h2>
+    </div>
+    <div class="prose">
+      <p data-i18n="cs.sitP1">A legal and real-estate consultancy discovered that someone was impersonating the firm to target one of its clients. Two separate phishing campaigns were live, and they had been running for more than a month before anyone connected them to a single source.</p>
+      <p data-i18n="cs.sitP2">The firm&#x27;s real exposure was wider than the incident in front of them. The same infrastructure could be pointed at any client on their book, and a duplicated campaign against a second client would have looked identical from the outside — which is the difference between an incident and a pattern.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="cs.didKicker">What we did</p>
+      <h2 class="sect" data-i18n="cs.didH">Four steps, in this order.</h2>
+    </div>
+    <div class="ladder">
+      <div class="step"><b>01</b><h3 data-i18n="cs.did1t">Traced both campaigns to one origin</h3><p data-i18n="cs.did1d">The two campaigns looked separate. One day of analysis established that both came from the same impersonation domain, which changed the problem from two incidents into one piece of infrastructure.</p></div>
+      <div class="step"><b>02</b><h3 data-i18n="cs.did2t">Mapped the hidden assets</h3><p data-i18n="cs.did2d">Behind the visible domain sat seven further assets holding the campaign up. None of them were known to the client. Taking down only what was visible would have left the operation intact.</p></div>
+      <div class="step"><b>03</b><h3 data-i18n="cs.did3t">Escalated to the authorities</h3><p data-i18n="cs.did3d">Once the origin was documented, the case was escalated to the relevant authorities with the evidence organised for them rather than handed over raw.</p></div>
+      <div class="step"><b>04</b><h3 data-i18n="cs.did4t">Left monitoring behind</h3><p data-i18n="cs.did4d">A monitoring platform now watches for domain changes and new registrations, polling every ten seconds, so a duplicated campaign surfaces in seconds rather than after a month.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band results">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker gold" data-i18n="cs.resKicker">Results</p>
+      <h2 class="sect" data-i18n="cs.resH">The numbers, as measured.</h2>
+    </div>
+    <div class="metrics">
+      <div class="metric"><b data-i18n="cs.mn1">7</b><span data-i18n="cs.ml1">hidden assets found behind one domain</span></div>
+      <div class="metric"><b data-i18n="cs.mn2">0</b><span data-i18n="cs.ml2">of them known to the client beforehand</span></div>
+      <div class="metric"><b data-i18n="cs.mn3">1 day</b><span data-i18n="cs.ml3">from engagement to identified origin</span></div>
+      <div class="metric"><b data-i18n="cs.mn4">3 days</b><span data-i18n="cs.ml4">from identification to takedown</span></div>
+    </div>
+    <p class="consent" data-i18n="cs.consent">Published with the client&#x27;s authorisation. The end client targeted by the campaign is not named, and no technical detail that would help reproduce the attack is included.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="cs.lessonKicker">The takeaway</p>
+      <h2 class="sect" data-i18n="cs.lessonH">What this case actually shows</h2>
+    </div>
+    <div class="prose">
+      <p data-i18n="cs.lesson">The month of exposure was not a detection failure by the firm — it was the absence of anyone looking. The seven unknown assets are the point: an organisation cannot defend a surface it has never been shown, and the visible domain was the smallest part of the problem. That is why the cybersecurity practice starts with discovery before it starts with fixing.</p>
+      <p><a class="plink" href="/techStudio/services/cybersecurity/" data-i18n="cs.practiceLink">Read about the Cybersecurity practice →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div>
+      <p class="kicker gold" data-i18n="con.kicker">Start here</p>
+      <h2 class="sect" data-i18n="cs.conH">Have a version of this problem?</h2>
+      <div class="band-head"><p data-i18n="con.lead">Describe the problem in a few lines. You get a written reply with a first read on it, whether or not there is an engagement in it. The message is sent from this page — no email client, no third-party form service, no trackers.</p></div>
+    </div>
+    <form class="form" id="contactForm" method="post" action="/api/contact" novalidate>
+      <label><span data-i18n="form.company">Company</span><input name="company" required maxlength="120" autocomplete="organization" data-i18n-ph="form.ph.company" placeholder="Your company"></label>
+      <label><span data-i18n="form.email">Work email</span><input type="email" name="email" required maxlength="254" autocomplete="email" data-i18n-ph="form.ph.email" placeholder="you@company.com"></label>
+      <label><span data-i18n="form.practice">Practice</span><select name="practice">
+          <option value="Software Engineering" data-i18n="form.o1">Software Engineering</option>
+          <option value="AI &amp; Automation" data-i18n="form.o2">AI &amp; Automation</option>
+          <option value="Cybersecurity" data-i18n="form.o3" selected>Cybersecurity</option>
+          <option value="Data &amp; Analytics" data-i18n="form.o4">Data &amp; Analytics</option>
+          <option value="Technical Delivery" data-i18n="form.o5">Technical Delivery &amp; Account Leadership</option>
+          <option value="Not sure yet" data-i18n="form.o6">Not sure yet</option>
+      </select></label>
+      <label><span data-i18n="form.problem">The problem</span><textarea name="message" rows="5" required maxlength="4000" data-i18n-ph="form.ph.message" placeholder="What are you trying to fix, build or protect?"></textarea></label>
+
+      <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="rendered_at" id="renderedAt">
+
+      <button type="submit" id="submitBtn" data-i18n="form.send">Send the brief</button>
+      <p class="formstatus" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="formnote" data-i18n="form.note">We use your message to reply to you. Nothing else — no list, no third parties.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>
+      <a href="/techStudio/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
+      <a href="/techStudio/legal/terms/" data-i18n="footer.terms">Terms</a> ·
+      <span id="year"></span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://tu-dominio.com/work/cg-legal-phishing/#case","headline":"Phishing and Impersonation Takedown: Two Live Campaigns Stopped in Three Days","description":"A law firm was being impersonated for over a month. One day of analysis found seven hidden assets behind a single domain; three days later the infrastructure was down.","inLanguage":"en","isPartOf":{"@id":"https://tu-dominio.com/work/"},"about":{"@type":"Service","name":"Cybersecurity"},"publisher":{"@id":"https://tu-dominio.com/#studio"},"url":"https://tu-dominio.com/work/cg-legal-phishing/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tu-dominio.com/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://tu-dominio.com/work/"},{"@type":"ListItem","position":3,"name":"Phishing and Impersonation Takedown","item":"https://tu-dominio.com/work/cg-legal-phishing/"}]}]}
+</script>
+
+<script src="/techStudio/i18n.js" defer></script>
+<script src="/techStudio/app.js" defer></script>
+</body>
+</html>

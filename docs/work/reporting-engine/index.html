@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-i18n-page="case-reporting-engine">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weekly Reporting Automation: Three Person-Hours a Week Became Twenty Minutes of Review | Technical Transformation Studio</title>
+<meta name="description" content="Two analysts spent 1.5 hours each preparing a weekly report. An AI-assisted pipeline now does the analysis in ten minutes, leaving twenty minutes of human curation — roughly 128 person-hours a year returned.">
+
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0E2439">
+
+<!-- Iconos. El navegador pide /favicon.ico solo, sin que nadie se lo diga:
+     por eso, sin archivo, aparece un 404 en la consola. Los <link> hacen el resto:
+     el SVG lo prefieren los navegadores modernos, el ICO es el respaldo. -->
+<link rel="icon" href="/techStudio/favicon.ico" sizes="32x32">
+<link rel="icon" href="/techStudio/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/techStudio/apple-touch-icon.png">
+<link rel="manifest" href="/techStudio/site.webmanifest">
+
+<link rel="canonical" href="https://tu-dominio.com/work/reporting-engine/">
+<link rel="alternate" hreflang="en" href="https://tu-dominio.com/work/reporting-engine/">
+<link rel="alternate" hreflang="es" href="https://tu-dominio.com/es/casos/reporting-engine/">
+<link rel="alternate" hreflang="x-default" href="https://tu-dominio.com/work/reporting-engine/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Weekly Reporting Automation: Three Person-Hours a Week Became Twenty Minutes of Review">
+<meta property="og:description" content="Two analysts spent 1.5 hours each preparing a weekly report. An AI-assisted pipeline now does the analysis in ten minutes, leaving twenty minutes of human curation — roughly 128 person-hours a year returned.">
+<meta property="og:url" content="https://tu-dominio.com/work/reporting-engine/">
+<meta property="og:image" content="https://tu-dominio.com/og/case-reporting-engine.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="/techStudio/styles.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="/techStudio/"><span class="monogram">TS</span><span>Technical Transformation Studio</span></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
+    <nav class="mainnav" id="mainnav">
+      <a href="/techStudio/#practices" data-i18n="nav.practices">Practices</a>
+      <a href="/techStudio/work/" data-i18n="nav.work">Case studies</a>
+      <a href="/techStudio/about/" data-i18n="nav.about">About</a>
+      <a href="/techStudio/#cost" data-i18n="nav.cost">Cost</a>
+      <a href="/techStudio/#faq" data-i18n="nav.faq">FAQ</a>
+      <label class="skip" for="langSelect" data-i18n="lang.label">Language</label>
+      <select class="langpick" id="langSelect" hidden></select>
+      <a class="cta-sm" href="#contact" data-i18n="nav.cta">Book an assessment</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/techStudio/" data-i18n="cs.crumbHome">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/techStudio/work/" data-i18n="cs.crumbWork">Case studies</a>
+        <span aria-hidden="true">/</span>
+        <span data-i18n="cs.crumbSelf">Weekly Reporting Automation</span>
+      </nav>
+      <p class="kicker" data-i18n="cs.kicker">AI &amp; Automation · Enterprise reporting</p>
+      <h1 data-i18n="cs.h1">Three person-hours a week, returned</h1>
+      <p class="deck" data-i18n="cs.deck">The weekly report had the same shape every week: export, clean, analyse, write, format, send. Two people, an hour and a half each. The pipeline now does the mechanical part in ten minutes and the humans do what humans are for — checking that the numbers deserve to be trusted.</p>
+      <div class="btnrow">
+        <a class="btn btn-fill" href="#contact" data-i18n="cs.cta1">Discuss a similar problem</a>
+        <a class="btn btn-line" href="/techStudio/services/ai-automation/" data-i18n="cs.cta2">See the practice</a>
+      </div>
+    </div>
+    <div class="filecard">
+      <h2 data-i18n="cs.atAGlance">At a glance</h2>
+      <dl>
+        <div class="filerow"><dt data-i18n="cs.mk1">Practice</dt><dd data-i18n="cs.mv1">AI &amp; Automation</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk2">Cadence</dt><dd data-i18n="cs.mv2">Weekly</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk3">Volume</dt><dd data-i18n="cs.mv3">~50 MB per file</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk4">Before</dt><dd data-i18n="cs.mv4">2 people × 1.5 h</dd></div>
+        <div class="filerow"><dt data-i18n="cs.mk5">After</dt><dd data-i18n="cs.mv5">10 min tooling + 20 min review</dd></div>
+      </dl>
+      <p class="stamp" data-i18n="cs.stack">Python · Pandas · LLM analysis · Word/PDF generation · Scheduled delivery</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="cs.sitKicker">The situation</p>
+      <h2 class="sect" data-i18n="cs.sitH">The report was not hard. It was just relentless</h2>
+    </div>
+    <div class="prose">
+      <p data-i18n="cs.sitP1">Two analysts each spent about an hour and a half a week producing the same weekly report: pulling the export, cleaning it, running the analysis, writing the observations and formatting the output. Nothing about it was intellectually difficult. It simply arrived every week, forever.</p>
+      <p data-i18n="cs.sitP2">The obvious automation would have been the wrong one: an AI that writes a confident summary nobody can verify. At around fifty megabytes per file, a wrong figure is easy to produce and nearly impossible to spot downstream — so data integrity had to be part of the design, not a hope.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="cs.didKicker">What we did</p>
+      <h2 class="sect" data-i18n="cs.didH">Four steps, in this order.</h2>
+    </div>
+    <div class="ladder">
+      <div class="step"><b>01</b><h3 data-i18n="cs.did1t">Measured the manual baseline</h3><p data-i18n="cs.did1d">Two people, an hour and a half each, every week. That figure became both the budget for the work and the criterion for calling it successful.</p></div>
+      <div class="step"><b>02</b><h3 data-i18n="cs.did2t">Automated the mechanical half</h3><p data-i18n="cs.did2d">Ingestion, cleaning, calculation and draft narrative run in about ten minutes across roughly fifty megabytes per file.</p></div>
+      <div class="step"><b>03</b><h3 data-i18n="cs.did3t">Kept a human on integrity</h3><p data-i18n="cs.did3d">Twenty minutes of curation and refinement remain deliberately in the loop. Figures are computed in code and traceable to source; the reviewer confirms the reading, not the arithmetic.</p></div>
+      <div class="step"><b>04</b><h3 data-i18n="cs.did4t">Left the schedule alone</h3><p data-i18n="cs.did4d">The report still lands weekly, in the same format, for the same audience. Nobody downstream had to change how they work.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band results">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker gold" data-i18n="cs.resKicker">Results</p>
+      <h2 class="sect" data-i18n="cs.resH">The numbers, as measured.</h2>
+    </div>
+    <div class="metrics">
+      <div class="metric"><b data-i18n="cs.mn1">3 h</b><span data-i18n="cs.ml1">of human work per week, before</span></div>
+      <div class="metric"><b data-i18n="cs.mn2">20 min</b><span data-i18n="cs.ml2">of human work per week, after</span></div>
+      <div class="metric"><b data-i18n="cs.mn3">~89%</b><span data-i18n="cs.ml3">less human time on the same report</span></div>
+      <div class="metric"><b data-i18n="cs.mn4">~128 h</b><span data-i18n="cs.ml4">returned per year, at 48 working weeks</span></div>
+    </div>
+    <p class="consent" data-i18n="cs.consent">Published without naming the organisation. Figures are the measured before-and-after of the workflow; no data, client or commercial detail is included.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker" data-i18n="cs.lessonKicker">The takeaway</p>
+      <h2 class="sect" data-i18n="cs.lessonH">What this case actually shows</h2>
+    </div>
+    <div class="prose">
+      <p data-i18n="cs.lesson">The twenty minutes that stayed are the interesting part. It would have been easy to claim the whole ninety, and the demo would have looked better — but a reporting pipeline nobody checks is a liability dressed as a saving. The human step is what makes the other eighty-nine percent safe to bank.</p>
+      <p><a class="plink" href="/techStudio/services/ai-automation/" data-i18n="cs.practiceLink">Read about the AI &amp; Automation practice →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div>
+      <p class="kicker gold" data-i18n="con.kicker">Start here</p>
+      <h2 class="sect" data-i18n="cs.conH">Have a version of this problem?</h2>
+      <div class="band-head"><p data-i18n="con.lead">Describe the problem in a few lines. You get a written reply with a first read on it, whether or not there is an engagement in it. The message is sent from this page — no email client, no third-party form service, no trackers.</p></div>
+    </div>
+    <form class="form" id="contactForm" method="post" action="/api/contact" novalidate>
+      <label><span data-i18n="form.company">Company</span><input name="company" required maxlength="120" autocomplete="organization" data-i18n-ph="form.ph.company" placeholder="Your company"></label>
+      <label><span data-i18n="form.email">Work email</span><input type="email" name="email" required maxlength="254" autocomplete="email" data-i18n-ph="form.ph.email" placeholder="you@company.com"></label>
+      <label><span data-i18n="form.practice">Practice</span><select name="practice">
+          <option value="Software Engineering" data-i18n="form.o1">Software Engineering</option>
+          <option value="AI &amp; Automation" data-i18n="form.o2" selected>AI &amp; Automation</option>
+          <option value="Cybersecurity" data-i18n="form.o3">Cybersecurity</option>
+          <option value="Data &amp; Analytics" data-i18n="form.o4">Data &amp; Analytics</option>
+          <option value="Technical Delivery" data-i18n="form.o5">Technical Delivery &amp; Account Leadership</option>
+          <option value="Not sure yet" data-i18n="form.o6">Not sure yet</option>
+      </select></label>
+      <label><span data-i18n="form.problem">The problem</span><textarea name="message" rows="5" required maxlength="4000" data-i18n-ph="form.ph.message" placeholder="What are you trying to fix, build or protect?"></textarea></label>
+
+      <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="rendered_at" id="renderedAt">
+
+      <button type="submit" id="submitBtn" data-i18n="form.send">Send the brief</button>
+      <p class="formstatus" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="formnote" data-i18n="form.note">We use your message to reply to you. Nothing else — no list, no third parties.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>
+      <a href="/techStudio/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
+      <a href="/techStudio/legal/terms/" data-i18n="footer.terms">Terms</a> ·
+      <span id="year"></span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://tu-dominio.com/work/reporting-engine/#case","headline":"Weekly Reporting Automation: Three Person-Hours a Week Became Twenty Minutes of Review","description":"Two analysts spent 1.5 hours each preparing a weekly report. An AI-assisted pipeline now does the analysis in ten minutes, leaving twenty minutes of human curation — roughly 128 person-hours a year returned.","inLanguage":"en","isPartOf":{"@id":"https://tu-dominio.com/work/"},"about":{"@type":"Service","name":"AI & Automation"},"publisher":{"@id":"https://tu-dominio.com/#studio"},"url":"https://tu-dominio.com/work/reporting-engine/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tu-dominio.com/"},{"@type":"ListItem","position":2,"name":"Case studies","item":"https://tu-dominio.com/work/"},{"@type":"ListItem","position":3,"name":"Weekly Reporting Automation","item":"https://tu-dominio.com/work/reporting-engine/"}]}]}
+</script>
+
+<script src="/techStudio/i18n.js" defer></script>
+<script src="/techStudio/app.js" defer></script>
+</body>
+</html>
