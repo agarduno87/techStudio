@@ -145,9 +145,15 @@
       </div>
     </article>
     <article class="person">
-      <div class="person-photo is-mock" role="img" aria-label="Portrait of Ricardo Vázquez">
-        <span class="mock-initials" aria-hidden="true">RV</span>
-        <span class="mock-note" data-i18n="ab.mockNote">Photo coming soon</span>
+      <div class="person-photo">
+        <picture>
+          <source type="image/webp" srcset="/techStudio/img/ricardo-vazquez-320.webp 320w, /techStudio/img/ricardo-vazquez-640.webp 640w" sizes="(max-width:620px) 100vw, 320px">
+          <img src="/techStudio/img/ricardo-vazquez-320.jpg"
+               srcset="/techStudio/img/ricardo-vazquez-320.jpg 320w, /techStudio/img/ricardo-vazquez-640.jpg 640w"
+               sizes="(max-width:620px) 100vw, 320px"
+               width="320" height="320" loading="lazy" decoding="async"
+               alt="Portrait of Ricardo Vázquez" data-i18n-alt="ab.p3alt">
+        </picture>
       </div>
       <div class="person-body">
         <h2 class="person-name">Ricardo Vázquez</h2>
@@ -228,7 +234,7 @@
 </footer>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"AboutPage","@id":"https://tu-dominio.com/about/","url":"https://tu-dominio.com/about/","name":"About — the people behind the studio"},{"@type":"Person","@id":"https://tu-dominio.com/about/#antonio","name":"Antonio Garduño","jobTitle":"Founder and Technical Director","worksFor":{"@id":"https://tu-dominio.com/#studio"},"image":"https://tu-dominio.com/img/antonio-garduno-640.jpg","knowsAbout":["Technical program management","Cybersecurity","Software engineering","AI automation"],"address":{"@type":"PostalAddress","addressLocality":"Santiago de Querétaro","addressCountry":"MX"}},{"@type":"Person","@id":"https://tu-dominio.com/about/#samuel","name":"Samuel González","jobTitle":"Software and Automation Engineer","worksFor":{"@id":"https://tu-dominio.com/#studio"},"image":"https://tu-dominio.com/img/samuel-gonzalez-640.jpg","knowsAbout":["AI agents","Workflow automation","Data engineering","Software development"]},{"@type":"Person","@id":"https://tu-dominio.com/about/#ricardo","name":"Ricardo Vázquez","jobTitle":"Data Engineer and Software Developer","worksFor":{"@id":"https://tu-dominio.com/#studio"},"knowsAbout":["Data engineering","Business intelligence","AI automation","System integrations"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tu-dominio.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://tu-dominio.com/about/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"AboutPage","@id":"https://tu-dominio.com/about/","url":"https://tu-dominio.com/about/","name":"About — the people behind the studio"},{"@type":"Person","@id":"https://tu-dominio.com/about/#antonio","name":"Antonio Garduño","jobTitle":"Founder and Technical Director","worksFor":{"@id":"https://tu-dominio.com/#studio"},"image":"https://tu-dominio.com/img/antonio-garduno-640.jpg","knowsAbout":["Technical program management","Cybersecurity","Software engineering","AI automation"],"address":{"@type":"PostalAddress","addressLocality":"Santiago de Querétaro","addressCountry":"MX"}},{"@type":"Person","@id":"https://tu-dominio.com/about/#samuel","name":"Samuel González","jobTitle":"Software and Automation Engineer","worksFor":{"@id":"https://tu-dominio.com/#studio"},"image":"https://tu-dominio.com/img/samuel-gonzalez-640.jpg","knowsAbout":["AI agents","Workflow automation","Data engineering","Software development"]},{"@type":"Person","@id":"https://tu-dominio.com/about/#ricardo","name":"Ricardo Vázquez","jobTitle":"Data Engineer and Software Developer","worksFor":{"@id":"https://tu-dominio.com/#studio"},"image":"https://tu-dominio.com/img/ricardo-vazquez-640.jpg","knowsAbout":["Data engineering","Business intelligence","AI automation","System integrations"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tu-dominio.com/"},{"@type":"ListItem","position":2,"name":"About","item":"https://tu-dominio.com/about/"}]}]}
 </script>
 
 <script src="/techStudio/i18n.js" defer></script>

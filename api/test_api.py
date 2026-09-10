@@ -380,10 +380,10 @@ def test_portraits_have_alt_and_dimensions():
     """Sin width/height la página salta al cargar la imagen (CLS), y sin alt
     no hay nada que leer para quien usa lector de pantalla."""
     body = client.get("/about/").text
-    assert body.count("<img") == 2
-    assert body.count('width="320" height="320"') == 2
-    assert body.count("alt=\"Portrait of") == 2
-    assert body.count('loading="lazy"') == 2
+    assert body.count("<img") == 3
+    assert body.count('width="320" height="320"') == 3
+    assert body.count("alt=\"Portrait of") == 3
+    assert body.count('loading="lazy"') == 3
 
 
 def test_legal_pages_are_served():
