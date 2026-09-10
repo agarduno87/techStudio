@@ -171,6 +171,7 @@ SERVICE_SLUGS = [
     "cybersecurity",
     "data-analytics",
     "technical-delivery",
+    "web-growth",
 ]
 
 
@@ -217,8 +218,8 @@ def test_home_links_to_every_service_page():
 
 def test_sitemap_lists_every_page():
     body = client.get("/sitemap.xml").text
-    # portada + 5 prácticas + índice de casos + 5 casos
-    assert body.count("<url>") == 12
+    # portada + 6 prácticas + índice de casos + 5 casos
+    assert body.count("<url>") == 13
     for slug in SERVICE_SLUGS:
         assert f"/services/{slug}/" in body, slug
 

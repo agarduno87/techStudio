@@ -282,7 +282,7 @@
      -----------------------------------------------------------------
      El número vive AQUÍ, en un solo lugar. Cámbialo por el real.
      Formato E.164 sin "+", sin espacios ni guiones (ej. 524421234567). */
-  var WA_NUMBER = "525500000000"; /* TODO: PLACEHOLDER — cambiar por el número real */
+  var WA_NUMBER = "529612155515"; /* +52 961 215 5515 */
   var WA_TEXT = "Hi Technical Transformation Studio — I'd like to talk about a project.";
 
   (function () {

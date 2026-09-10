@@ -120,10 +120,10 @@ def main() -> None:
         sys.exit(1)
 
     cards = [
-        ("home", "Five practices",
+        ("home", "Six practices",
          "Technical work, delivered under a written scope."),
         ("about", "Who does the work",
-         "Two people, and both of them senior."),
+         "Three engineers, all of them senior."),
         ("work", "Evidence",
          "Systems that exist, with the numbers attached."),
         ("privacy", "Legal", "Privacy notice"),

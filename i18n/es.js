@@ -23,7 +23,7 @@ window.ttsRegisterDictionary("es", {
   "hero.kicker": "Servicios · Alcance · Límites",
   "hero.h1a": "Trabajo técnico, entregado bajo un",
   "hero.h1b": "alcance escrito.",
-  "hero.deck": "Cinco prácticas para empresas que necesitan ejecución técnica senior sin contratar un equipo completo. Cada proyecto declara qué incluye, qué excluye y qué recibes al final.",
+  "hero.deck": "Seis prácticas para empresas que necesitan ejecución técnica senior sin contratar un equipo completo. Cada proyecto declara qué incluye, qué excluye y qué recibes al final.",
   "hero.cta1": "Agenda un diagnóstico técnico",
   "hero.cta2": "Ver las prácticas",
 
@@ -39,8 +39,8 @@ window.ttsRegisterDictionary("es", {
   "file.k5": "Idiomas de trabajo",
   "file.stamp": "El alcance se acuerda por escrito antes de empezar.",
 
-  "pr.kicker": "Cinco prácticas",
-  "pr.h2": "Un solo socio técnico. Cinco capacidades, con el mismo peso.",
+  "pr.kicker": "Seis prácticas",
+  "pr.h2": "Un solo socio técnico. Seis capacidades, con el mismo peso.",
   "pr.intro": "Combinamos ingeniería, análisis de negocio y liderazgo de programas técnicos, en vez de mandar cada problema a un proveedor distinto. Cada práctica declara sus límites de frente.",
 
   "ledger.in": "Incluye",
@@ -118,6 +118,20 @@ window.ttsRegisterDictionary("es", {
   "p5.m2": "2–4 semanas",
   "p5.m3": "Equipos que entregan sin un dueño técnico",
   "p5.c": "Suma liderazgo técnico →",
+
+  "p6.t": "Web y crecimiento",
+  "p6.d": "Sitios públicos y landing pages hechos para convertir, no solo para publicarse — con el SEO, la analítica y la conexión a CRM/WhatsApp que convierten una visita en un prospecto que sí puedes atender.",
+  "p6.i1": "Sitios web y landing pages enfocados a conversión",
+  "p6.i2": "Bases de SEO y analítica que sí puedes leer",
+  "p6.i3": "Formularios conectados a tu CRM, correo o WhatsApp, con notificaciones",
+  "p6.i4": "Código, notas de hosting y entrega — el sitio es tuyo",
+  "p6.o1": "Redacción de contenido continua o gestión de redes sociales",
+  "p6.o2": "Compra de medios y gestión de presupuesto de anuncios",
+  "p6.o3": "Diseño de identidad de marca desde cero",
+  "p6.m1": "Sitio de alcance cerrado",
+  "p6.m2": "1–3 semanas",
+  "p6.m3": "Negocios cuyo sitio no trae prospectos",
+  "p6.c": "Construye un sitio que convierte →",
 
   "calc.kicker": "El costo de dejarlo así",
   "calc.h2": "El trabajo manual no es gratis. Solo se factura como sueldo.",
@@ -227,6 +241,7 @@ window.ttsRegisterDictionary("es", {
   "form.o3": "Ciberseguridad",
   "form.o4": "Datos y analítica",
   "form.o5": "Entrega técnica y liderazgo de cuentas",
+  "form.o7": "Web y crecimiento",
   "form.o6": "Aún no lo sé",
   "form.problem": "El problema",
   "form.send": "Enviar el brief",

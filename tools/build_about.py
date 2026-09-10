@@ -171,6 +171,7 @@ def form_html():
         ("Cybersecurity", "form.o3", "Cybersecurity"),
         ("Data &amp; Analytics", "form.o4", "Data &amp; Analytics"),
         ("Technical Delivery", "form.o5", "Technical Delivery &amp; Account Leadership"),
+        ("Web &amp; Growth", "form.o7", "Web &amp; Growth"),
         ("Not sure yet", "form.o6", "Not sure yet"),
     ]
     opts = "\n".join(

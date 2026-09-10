@@ -88,6 +88,7 @@ ALLOWED_PRACTICES = {
     "Cybersecurity",
     "Data & Analytics",
     "Technical Delivery",
+    "Web & Growth",
     "Not sure yet",
 }
 
