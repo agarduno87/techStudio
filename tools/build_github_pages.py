@@ -52,7 +52,7 @@ OUT = ROOT / "docs"
 # Nada de esto se publica: es codigo, originales de marca o secretos.
 BLOCKED_DIRS = {"api", "tools", "tests", "assets", "docs", ".git", ".venv",
                 "venv", "__pycache__", ".pytest_cache", "node_modules"}
-BLOCKED_SUFFIX = {".py", ".sh", ".db", ".sqlite3", ".pyc", ".env", ".zip", ".xlsx"}
+BLOCKED_SUFFIX = {".py", ".sh", ".db", ".sqlite3", ".pyc", ".env", ".zip", ".xlsx", ".md"}
 BLOCKED_NAMES = {".env", ".env.example", ".gitignore", ".DS_Store", "_headers"}
 
 FORM_SHIM = """/* GitHub Pages no tiene backend: el formulario se envia por correo.
