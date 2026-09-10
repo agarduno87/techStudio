@@ -53,7 +53,7 @@ window.ttsRegisterDictionary("es", {
   "pg.q2": "¿A dónde van nuestros datos?",
   "pg.a2": "Se decide contigo antes de construir nada, y queda escrito en el alcance: qué proveedor de modelo, qué sale de tu infraestructura, qué se retiene y por cuánto tiempo. Si nada puede salir, el diseño cambia en consecuencia.",
   "pg.q3": "¿Cuánto cuesta un proyecto de automatización?",
-  "pg.a3": "Un MVP arranca típicamente alrededor de USD 2,000 y la cifra exacta depende de cuántos sistemas tenga que tocar. El diagnóstico previo arranca alrededor de USD 500 y te quedas con la hoja de ruta pase lo que pase.",
+  "pg.a3": "Un MVP arranca típicamente alrededor de USD 4,500 y la cifra exacta depende de cuántos sistemas tenga que tocar. El diagnóstico previo arranca alrededor de USD 1,500 y te quedas con la hoja de ruta pase lo que pase.",
   "pg.q4": "¿Y si el proceso cambia después de automatizarlo?",
   "pg.a4": "Los sistemas que se construyen aquí están hechos para editarse: documentados, versionados y entregados a tu equipo. Un cambio chico no debería obligarte a llamarnos."
 });

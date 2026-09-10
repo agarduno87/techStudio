@@ -36,7 +36,10 @@ a{color:inherit}
 .mainnav a:hover{color:var(--ink);border-bottom-color:var(--gold)}
 .langpick{font:inherit;font-size:13px;background:var(--paper-2);border:1px solid var(--rule);padding:7px 8px;color:var(--muted);cursor:pointer}
 .langpick:hover{border-color:var(--gold);color:var(--ink)}
-.cta-sm{background:var(--ink);color:var(--paper-2)!important;padding:10px 16px;text-decoration:none;font-size:13px;font-weight:600;border-bottom:none!important}
+/* padding con especificidad .mainnav a.cta-sm: la regla .mainnav a (padding:6px 0)
+   es más específica que .cta-sm y ganaba, dejando el texto pegado a los bordes. */
+.cta-sm{background:var(--ink);color:var(--paper-2)!important;text-decoration:none;font-size:13px;font-weight:600;border-bottom:none!important;white-space:nowrap}
+.mainnav a.cta-sm{padding:11px 20px}
 .cta-sm:hover{background:var(--ink-2)}
 .burger{display:none;background:var(--paper-2);border:1px solid var(--rule);width:42px;height:38px;font-size:18px;color:var(--ink);cursor:pointer}
 
@@ -252,3 +255,50 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .metric:last-child{border-bottom:0}
   .band,.calc{padding:56px 0}
 }
+
+/* ==========================================================================
+   Añadidos: foto placeholder (mock), paquetes/precios, WhatsApp, partnership.
+   ========================================================================== */
+
+/* ---------- foto placeholder (mientras llega la real) ---------- */
+.person-photo.is-mock{aspect-ratio:1/1;border:1px dashed var(--rule);background:var(--paper-2);
+  display:grid;place-items:center;position:relative}
+.person-photo.is-mock .mock-initials{font-family:var(--serif);font-size:64px;color:var(--rule);line-height:1}
+.person-photo.is-mock .mock-note{position:absolute;bottom:10px;left:0;right:0;text-align:center;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- paquetes / precios ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.plan{border:1px solid var(--rule);background:var(--paper-2);display:flex;flex-direction:column;min-height:100%}
+.plan.feat{border:1.5px solid var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.plan-badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper-2);padding:8px 16px;text-align:center}
+.plan.feat .plan-badge{background:var(--gold-soft);color:var(--ink)}
+.plan-head{padding:24px 22px 8px}
+.plan-name{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em;margin:0 0 6px}
+.plan-tag{color:var(--muted);font-size:13.5px;margin:0;min-height:38px}
+.plan-price{padding:0 22px 18px;border-bottom:1px solid var(--rule)}
+.plan-price .amt{font-family:var(--serif);font-size:34px;color:var(--gold);letter-spacing:-.02em;line-height:1}
+.plan-price .cur{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;margin-left:6px}
+.plan-price .from{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.plan-feats{list-style:none;margin:0;padding:20px 22px;font-size:14px;flex:1}
+.plan-feats li{padding:6px 0 6px 20px;position:relative;color:var(--muted)}
+.plan-feats li::before{content:"+";position:absolute;left:0;color:var(--in);font-family:var(--mono);font-weight:700}
+.plan-cta{padding:0 22px 24px}
+.plan-cta .btn{width:100%;text-align:center}
+.plans-note{margin:26px 0 0;font-size:13px;color:var(--muted);max-width:70ch}
+.plans-note a{border-bottom:1.5px solid var(--gold);text-decoration:none;font-weight:600}
+
+/* ---------- botón flotante de WhatsApp ---------- */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;align-items:center;justify-content:center;
+  width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;text-decoration:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.28);transition:transform .15s ease,box-shadow .15s ease}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.34)}
+.wa-float svg{width:30px;height:30px;display:block;fill:#fff}
+@media(max-width:620px){.wa-float{right:14px;bottom:14px;width:52px;height:52px}.wa-float svg{width:28px;height:28px}}
+
+/* ---------- link de alianza en el footer ---------- */
+.footer-partner{color:#A9BACB!important;text-decoration:none;border-bottom:1px solid #2F4C68}
+.footer-partner:hover{color:var(--gold-soft)!important;border-bottom-color:var(--gold-soft)}
+
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
