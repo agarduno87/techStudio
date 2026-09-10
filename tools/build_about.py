@@ -285,8 +285,8 @@ def build() -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About: The Three People Who Do the Work | Technical Transformation Studio</title>
-<meta name="description" content="Antonio Garduño, Samuel González and Ricardo Vázquez — a technical director in delivery, cybersecurity and program management; a software and automation engineer; and a data engineer working in pipelines, warehousing and BI. Based in Querétaro, México.">
+<title>About — The Three People Who Do the Work</title>
+<meta name="description" content="Antonio Garduño, Samuel González and Ricardo Vázquez — a technical director, a software &amp; automation engineer, and a data engineer. Querétaro, México.">
 
 <meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'">
@@ -302,7 +302,6 @@ def build() -> str:
 
 <link rel="canonical" href="{DOMAIN}/about/">
 <link rel="alternate" hreflang="en" href="{DOMAIN}/about/">
-<link rel="alternate" hreflang="es" href="{DOMAIN}/es/nosotros/">
 <link rel="alternate" hreflang="x-default" href="{DOMAIN}/about/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The three people who do the work">

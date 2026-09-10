@@ -423,7 +423,7 @@ async def leads(x_admin_token: str = Header(default="")) -> dict:
 # repositorio para poder regenerarlos, no para que cualquiera se los descargue.
 BLOCKED_DIRS = {"api", "assets", "tools", "tests", ".git", ".venv", "venv",
                 "__pycache__", "node_modules"}
-BLOCKED_SUFFIXES = {".py", ".db", ".env", ".sh", ".pyc", ".log", ".sqlite3"}
+BLOCKED_SUFFIXES = {".py", ".db", ".env", ".sh", ".pyc", ".log", ".sqlite3", ".md"}
 BLOCKED_NAMES = {".env", ".gitignore", ".env.example"}
 
 

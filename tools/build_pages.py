@@ -45,7 +45,8 @@ PAGES = [
         "num": "01",
         "title_en": "Custom Software Development: Internal Tools, APIs and Business Applications",
         "title_es": "Desarrollo de software a la medida: herramientas internas, APIs y aplicaciones de negocio",
-        "desc_en": "Custom internal tools, APIs, dashboards and business applications built to a fixed scope and handed over with source code and documentation. Remote from Querétaro, México.",
+        "title_tag_en": "Custom Software Development — Tools, APIs & Apps",
+        "desc_en": "Custom internal tools, APIs, dashboards and business applications built to a fixed scope, handed over with source code and documentation.",
         "desc_es": "Herramientas internas, APIs, dashboards y aplicaciones de negocio a la medida, construidas a alcance cerrado y entregadas con código fuente y documentación. Remoto desde Querétaro, México.",
         "h1_en": "Custom software your team can actually maintain",
         "h1_es": "Software a la medida que tu equipo sí puede mantener",
@@ -128,7 +129,8 @@ PAGES = [
         "num": "02",
         "title_en": "AI Automation for Business: Reporting Automation and Agentic AI Assistants",
         "title_es": "Automatización con IA para empresas: reportes automáticos y asistentes de IA agénticos",
-        "desc_en": "Turn manual reporting into an automated system: Excel and CSV in, analysis and generated Word/PDF reports out. Agentic AI assistants over your own data, with traceable outputs.",
+        "title_tag_en": "AI Automation & Reporting for Business",
+        "desc_en": "Reporting automation and agentic AI assistants over your own data: spreadsheets in, analysed Word/PDF reports out, every figure traceable.",
         "desc_es": "Convierte el reporteo manual en un sistema automatizado: entran Excel y CSV, salen análisis y reportes Word/PDF generados. Asistentes de IA agénticos sobre tus propios datos, con resultados rastreables.",
         "h1_en": "Automated reporting and AI agents over your own data",
         "h1_es": "Reportes automatizados y agentes de IA sobre tus propios datos",
@@ -213,7 +215,8 @@ PAGES = [
         "num": "03",
         "title_en": "Web Application Penetration Testing, Vulnerability Assessment and Cyber Risk Governance",
         "title_es": "Pentesting de aplicaciones web, análisis de vulnerabilidades y gobierno del riesgo",
-        "desc_en": "Scoped web application penetration testing by a certified tester, external exposure discovery, vulnerability analysis and a risk governance plan. Written authorisation and rules of engagement before anything is tested.",
+        "title_tag_en": "Web App Pentesting & Cyber Risk Governance",
+        "desc_en": "Scoped web application penetration testing by a certified tester, external exposure discovery and a risk governance plan — under written authorisation.",
         "desc_es": "Pentesting de aplicaciones web con alcance acotado por un tester certificado, descubrimiento de exposición externa, análisis de vulnerabilidades y plan de gobierno del riesgo. Autorización escrita y reglas de enfrentamiento antes de probar nada.",
         "h1_en": "See what you expose before someone else does",
         "h1_es": "Mira lo que expones antes de que alguien más lo haga",
@@ -297,7 +300,8 @@ PAGES = [
         "num": "04",
         "title_en": "Data, Analytics and Engineering: Pipelines, Warehousing, Dashboards and BI",
         "title_es": "Datos, analítica e ingeniería: pipelines, warehousing, dashboards y BI",
-        "desc_en": "Data pipelines and orchestration, a modelled warehouse (Snowflake, dbt), operational dashboards and business intelligence — with metric definitions agreed with the business and the queries handed over with the analysis.",
+        "title_tag_en": "Data Engineering, Analytics & BI",
+        "desc_en": "Data pipelines and orchestration, a warehouse (Snowflake, dbt), dashboards and BI — with metric definitions agreed and the queries handed over.",
         "desc_es": "Pipelines y orquestación de datos, un warehouse modelado (Snowflake, dbt), dashboards operativos e inteligencia de negocio — con las definiciones de métricas acordadas con el negocio y las consultas entregadas junto con el análisis.",
         "h1_en": "Numbers someone is willing to sign",
         "h1_es": "Números que alguien está dispuesto a firmar",
@@ -386,7 +390,8 @@ PAGES = [
         "num": "05",
         "title_en": "Fractional Technical Program Management and Enterprise Account Leadership",
         "title_es": "Gestión fraccional de programas técnicos y liderazgo de cuentas enterprise",
-        "desc_en": "A senior technical owner between your engineering team and your customers: roadmaps, vendor coordination, escalation handling and executive reporting, on a monthly retainer.",
+        "title_tag_en": "Fractional Technical Program Management",
+        "desc_en": "A senior technical owner between your engineering team and your customers: roadmaps, escalations and executive reporting, on a monthly retainer.",
         "desc_es": "Un dueño técnico senior entre tu equipo de ingeniería y tus clientes: hojas de ruta, coordinación de proveedores, manejo de escalamientos y reporte ejecutivo, en retainer mensual.",
         "h1_en": "The technical owner your delivery is missing",
         "h1_es": "El dueño técnico que le falta a tu entrega",
@@ -468,7 +473,8 @@ PAGES = [
         "num": "06",
         "title_en": "Website Development, SEO and Conversion-Focused Landing Pages",
         "title_es": "Desarrollo web, SEO y landing pages enfocadas a conversión",
-        "desc_en": "Conversion-focused websites and landing pages with SEO foundations, analytics and forms wired to your CRM, email or WhatsApp. Source and hosting handed over — the site is yours.",
+        "title_tag_en": "Website Development, SEO & Conversion",
+        "desc_en": "Conversion-focused websites and landing pages with SEO, analytics and forms wired to your CRM, email or WhatsApp. Source and hosting handed over.",
         "desc_es": "Sitios web y landing pages enfocados a conversión, con bases de SEO, analítica y formularios conectados a tu CRM, correo o WhatsApp. Código y hosting entregados — el sitio es tuyo.",
         "h1_en": "A website that brings you work, not just compliments",
         "h1_es": "Un sitio web que te trae trabajo, no solo cumplidos",
@@ -669,7 +675,7 @@ def build_page(p: dict) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{E(p["title_en"])} | Technical Transformation Studio</title>
+<title>{E(p.get("title_tag_en", p["title_en"]))}</title>
 <meta name="description" content="{E(p["desc_en"])}">
 
 <meta http-equiv="Content-Security-Policy"
@@ -689,7 +695,6 @@ def build_page(p: dict) -> str:
 
 <link rel="canonical" href="{url}">
 <link rel="alternate" hreflang="en" href="{url}">
-<link rel="alternate" hreflang="es" href="{DOMAIN}/es/servicios/{slug}/">
 <link rel="alternate" hreflang="x-default" href="{url}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{E(p["title_en"])}">

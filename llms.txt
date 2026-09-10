@@ -1,0 +1,46 @@
+# Technical Transformation Studio
+
+> Senior technical studio in Querétaro, México. Software engineering, AI automation,
+> cybersecurity, data engineering & BI, technical delivery, and web & growth.
+> Work is delivered under a written scope, in English or Spanish, and handed over
+> with the source code, documentation and credentials.
+
+## What it is
+- A three-person senior studio: Antonio Garduño (technical director), Samuel González
+  (software & automation engineer), Ricardo Vázquez (data engineer & software developer).
+- No junior pyramid — you work with the three named people.
+- Entry point: a two-week technical assessment (findings + a roadmap you own, no
+  commitment to continue).
+- Languages: English and Spanish. Remote, based in Querétaro, México.
+
+## Practices
+- Software Engineering — internal tools, APIs, integrations and business applications.
+- AI & Automation — agentic assistants and reporting automation over your own data,
+  with outputs traceable to the source.
+- Cybersecurity — scoped web application penetration testing and risk governance,
+  under written authorisation.
+- Data, Analytics & Engineering — pipelines and orchestration (Airflow), warehousing
+  (Snowflake, dbt), dashboards and business intelligence.
+- Technical Delivery & Account Leadership — fractional technical program management.
+- Web & Growth — conversion-focused websites and landing pages, SEO, analytics, and
+  forms wired to a CRM, email or WhatsApp.
+
+## Packages (starting prices in USD; the exact figure follows the assessment)
+- Launch — from USD 1,500: two-week assessment plus one quick win.
+- Build — from USD 4,500: one system built and handed over (tool, automation or dashboard).
+- Transform — from USD 9,000: an integrated system end to end; retainer from USD 1,200/mo.
+
+## Boundaries (stated on the site)
+- Not a staffing agency; scope is agreed in writing before work begins.
+- Penetration testing is scoped and requires written authorisation and agreed rules of
+  engagement — no full-scope red-team, social engineering or physical intrusion.
+- Source code, documentation and credentials are handed over; studio access is revoked
+  at closure.
+
+## Links
+- Home: https://tu-dominio.com/
+- About the team: https://tu-dominio.com/about/
+- Practices: https://tu-dominio.com/#practices
+- Packages: https://tu-dominio.com/#pricing
+- Case studies: https://tu-dominio.com/work/
+- Contact: https://tu-dominio.com/#contact
