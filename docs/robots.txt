@@ -1,5 +1,52 @@
+# robots.txt — Technical Transformation Studio
+# El dominio del Sitemap se ajusta con tools/set_domain.py cuando exista.
+
+# Buscadores clásicos: acceso completo salvo la API.
 User-agent: *
 Allow: /
 Disallow: /api/
 
+# Motores generativos: permitidos a propósito (queremos ser citados).
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+# Crawlers de solo-entrenamiento: bloqueados.
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
 Sitemap: https://tu-dominio.com/sitemap.xml
+Host: tu-dominio.com

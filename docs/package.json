@@ -1,0 +1,11 @@
+{
+  "name": "techstudio-site",
+  "private": true,
+  "description": "Sitio de Technical Transformation Studio. jsdom es solo para las pruebas de navegador (tests/*.check.js).",
+  "scripts": {
+    "test": "for f in tests/*.check.js; do node \"$f\" || exit 1; done"
+  },
+  "devDependencies": {
+    "jsdom": "^30.0.1"
+  }
+}
