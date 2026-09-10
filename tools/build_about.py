@@ -105,7 +105,6 @@ PEOPLE = [
     },
     {
         "slug": "ricardo-vazquez",
-        "mock": True,  # Foto placeholder hasta que Ricardo entregue la suya.
         "name": "Ricardo Vázquez",
         "role_en": "Data Engineer &amp; Software Developer",
         "role_es": "Ingeniero de datos y desarrollador de software",
@@ -272,6 +271,7 @@ def build() -> str:
             {"@type": "Person", "@id": DOMAIN + "/about/#ricardo", "name": "Ricardo Vázquez",
              "jobTitle": "Data Engineer and Software Developer",
              "worksFor": {"@id": DOMAIN + "/#studio"},
+             "image": DOMAIN + "/img/ricardo-vazquez-640.jpg",
              "knowsAbout": ["Data engineering", "Business intelligence",
                             "AI automation", "System integrations"]},
             {"@type": "BreadcrumbList", "itemListElement": [
