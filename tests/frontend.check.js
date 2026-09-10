@@ -91,7 +91,7 @@ check("h1 traducido", document.querySelector("h1").textContent.includes("alcance
       document.querySelector("h1").textContent.trim());
 check("html lang=es", document.documentElement.lang === "es");
 check("nav traducido", document.querySelector('[data-i18n="nav.practices"]').textContent === "Prácticas");
-check("práctica 4 traducida", document.querySelector('[data-i18n="p4.t"]').textContent === "Datos y analítica");
+check("práctica 4 traducida", document.querySelector('[data-i18n="p4.t"]').textContent === "Datos, analítica e ingeniería");
 check("placeholder traducido",
       document.querySelector('[data-i18n-ph="form.ph.company"]').placeholder === "Tu empresa");
 
@@ -114,7 +114,7 @@ check("option VALUE sigue en inglés", opts[3].value === "Data & Analytics", opt
 // 7. Volver a inglés
 $("langSelect").value = "en";
 $("langSelect").dispatchEvent(new window.Event("change"));
-check("regresa a inglés", document.querySelector('[data-i18n="p4.t"]').textContent === "Data & Analytics");
+check("regresa a inglés", document.querySelector('[data-i18n="p4.t"]').textContent === "Data, Analytics & Engineering");
 check("moneda regresa a USD", $("rate").value === "25" && $("rate").max === "120");
 
 // 8. URL refleja idioma

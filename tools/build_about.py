@@ -26,8 +26,10 @@ nombres. La estructura no cambia.
 
 CONSENTIMIENTO
 --------------
-La foto y la biografía de Samuel son datos de un tercero. Antes de publicar,
-consigue su visto bueno POR ESCRITO sobre el texto exacto y la imagen exacta.
+La foto y la biografía de Samuel y de Ricardo son datos de terceros. Antes de
+publicar, consigue su visto bueno POR ESCRITO sobre el texto exacto y la imagen
+exacta. Ricardo entra con foto placeholder ("mock": True) hasta que entregue la
+suya: cuando llegue, quita esa bandera y coloca /img/ricardo-vazquez-320/-640.
 """
 
 from __future__ import annotations
@@ -101,6 +103,34 @@ PEOPLE = [
             ("Data engineering for operations", "Ingeniería de datos para operaciones"),
         ],
     },
+    {
+        "slug": "ricardo-vazquez",
+        "mock": True,  # Foto placeholder hasta que Ricardo entregue la suya.
+        "name": "Ricardo Vázquez",
+        "role_en": "Data Engineer &amp; Software Developer",
+        "role_es": "Ingeniero de datos y desarrollador de software",
+        "alt_en": "Portrait of Ricardo Vázquez",
+        "alt_es": "Retrato de Ricardo Vázquez",
+        "bio_en": [
+            "Mechatronics engineer with eight years across software, data and technical operations. His path runs from software development, integrations and technical client work into business intelligence and data engineering — which means he has seen both the systems a business runs on and the data those systems leave behind.",
+            "His work today is data engineering and intelligent automation: pipelines and orchestration with Python and SQL, warehouses modelled in Snowflake and dbt, and workflows built around LLMs and AI agents. The discipline he brings is deliberately unglamorous — make the numbers reliable and the process repeatable, and automate anything a person should not have to do twice.",
+        ],
+        "bio_es": [
+            "Ingeniero mecatrónico con ocho años entre software, datos y operaciones técnicas. Su trayectoria va del desarrollo de software, las integraciones y el trabajo técnico con clientes hacia la inteligencia de negocio y la ingeniería de datos — es decir, ha visto tanto los sistemas con los que opera un negocio como los datos que esos sistemas dejan atrás.",
+            "Su trabajo hoy es ingeniería de datos y automatización inteligente: pipelines y orquestación con Python y SQL, warehouses modelados en Snowflake y dbt, y flujos construidos alrededor de LLMs y agentes de IA. La disciplina que aporta es deliberadamente poco vistosa — hacer confiables los números y repetible el proceso, y automatizar todo lo que una persona no debería hacer dos veces.",
+        ],
+        "focus_en": ["Data engineering", "Business intelligence", "AI &amp; automation", "System integrations"],
+        "focus_es": ["Ingeniería de datos", "Inteligencia de negocio", "IA y automatización", "Integraciones de sistemas"],
+        "creds": [
+            ("Python, SQL, C# &amp; Go", "Python, SQL, C# y Go"),
+            ("Data pipelines &amp; warehousing (Snowflake, dbt)", "Pipelines y warehousing de datos (Snowflake, dbt)"),
+            ("Apache Airflow Fundamentals — Astronomer / Credly", "Apache Airflow Fundamentals — Astronomer / Credly"),
+            ("Business intelligence &amp; reporting", "Inteligencia de negocio y reporteo"),
+            ("AI agents &amp; LLM workflows", "Agentes de IA y flujos con LLM"),
+            ("BEng Mechatronics · Cloud Computing (Google Activate)", "Ing. Mecatrónica · Cloud Computing (Google Activate)"),
+            ("English C1 · Spanish native", "Inglés C1 · Español nativo"),
+        ],
+    },
 ]
 
 PRINCIPLES = [
@@ -110,7 +140,7 @@ PRINCIPLES = [
     ("Built to be handed over", "Hecho para entregarse",
      "Source code, documentation and credentials are yours from the first commit, and our access is revoked at closure. A supplier who makes you dependent has solved their problem, not yours.",
      "El código, la documentación y las credenciales son tuyos desde el primer commit, y nuestros accesos se revocan al cierre. Un proveedor que te vuelve dependiente resolvió su problema, no el tuyo."),
-    ("Two seniors, not a pyramid", "Dos seniors, no una pirámide",
+    ("Three seniors, not a pyramid", "Tres seniors, no una pirámide",
      "You get the people on this page. There is no layer of junior staff learning on your budget, and when a project needs more hands we tell you who is joining before they start.",
      "Trabajas con las personas de esta página. No hay una capa de gente junior aprendiendo con tu presupuesto, y cuando un proyecto necesita más manos te decimos quién entra antes de que empiece."),
 ]
@@ -125,6 +155,7 @@ def nav_html(cta="#contact"):
       <a href="/work/" data-i18n="nav.work">Case studies</a>
       <a href="/about/" data-i18n="nav.about">About</a>
       <a href="/#cost" data-i18n="nav.cost">Cost</a>
+      <a href="/#pricing" data-i18n="nav.pricing">Pricing</a>
       <a href="/#faq" data-i18n="nav.faq">FAQ</a>
       <label class="skip" for="langSelect" data-i18n="lang.label">Language</label>
       <select class="langpick" id="langSelect" hidden></select>
@@ -174,8 +205,17 @@ def person_html(i: int, p: dict) -> str:
     creds = "\n".join(
         f'          <li data-i18n="ab.p{n}c{j+1}">{c_en}</li>' for j, (c_en, c_es) in enumerate(p["creds"])
     )
-    return f"""    <article class="person">
-      <div class="person-photo">
+    initials = "".join(part[0] for part in p["name"].split()[:2]).upper()
+    if p.get("mock"):
+        # Sin foto todavía: caja placeholder con iniciales, sin pedir un archivo
+        # inexistente (evita el 404). Cuando llegue la foto real, quita "mock" y
+        # coloca /img/<slug>-320.jpg / -640 (.jpg y .webp) como los demás.
+        photo = f"""      <div class="person-photo is-mock" role="img" aria-label="{p['alt_en']}">
+        <span class="mock-initials" aria-hidden="true">{initials}</span>
+        <span class="mock-note" data-i18n="ab.mockNote">Photo coming soon</span>
+      </div>"""
+    else:
+        photo = f"""      <div class="person-photo">
         <picture>
           <source type="image/webp" srcset="/img/{p['slug']}-320.webp 320w, /img/{p['slug']}-640.webp 640w" sizes="(max-width:620px) 100vw, 320px">
           <img src="/img/{p['slug']}-320.jpg"
@@ -184,7 +224,9 @@ def person_html(i: int, p: dict) -> str:
                width="320" height="320" loading="lazy" decoding="async"
                alt="{p['alt_en']}" data-i18n-alt="ab.p{n}alt">
         </picture>
-      </div>
+      </div>"""
+    return f"""    <article class="person">
+{photo}
       <div class="person-body">
         <h2 class="person-name">{p['name']}</h2>
         <p class="person-role" data-i18n="ab.p{n}role">{p['role_en']}</p>
@@ -226,6 +268,11 @@ def build() -> str:
              "image": DOMAIN + "/img/samuel-gonzalez-640.jpg",
              "knowsAbout": ["AI agents", "Workflow automation", "Data engineering",
                             "Software development"]},
+            {"@type": "Person", "@id": DOMAIN + "/about/#ricardo", "name": "Ricardo Vázquez",
+             "jobTitle": "Data Engineer and Software Developer",
+             "worksFor": {"@id": DOMAIN + "/#studio"},
+             "knowsAbout": ["Data engineering", "Business intelligence",
+                            "AI automation", "System integrations"]},
             {"@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN + "/"},
                 {"@type": "ListItem", "position": 2, "name": "About", "item": DOMAIN + "/about/"}]},
@@ -237,8 +284,8 @@ def build() -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About: The Two People Who Do the Work | Technical Transformation Studio</title>
-<meta name="description" content="Antonio Garduño and Samuel González — a technical director with a decade in delivery, cybersecurity and program management, and a software engineer specialised in AI agents and workflow automation. Based in Querétaro, México.">
+<title>About: The Three People Who Do the Work | Technical Transformation Studio</title>
+<meta name="description" content="Antonio Garduño, Samuel González and Ricardo Vázquez — a technical director in delivery, cybersecurity and program management; a software and automation engineer; and a data engineer working in pipelines, warehousing and BI. Based in Querétaro, México.">
 
 <meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; object-src 'none'">
@@ -257,8 +304,8 @@ def build() -> str:
 <link rel="alternate" hreflang="es" href="{DOMAIN}/es/nosotros/">
 <link rel="alternate" hreflang="x-default" href="{DOMAIN}/about/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The two people who do the work">
-<meta property="og:description" content="A technical director and a software engineer. No pyramid, no junior layer learning on your budget.">
+<meta property="og:title" content="The three people who do the work">
+<meta property="og:description" content="A technical director, a software engineer and a data engineer. No pyramid, no junior layer learning on your budget.">
 <meta property="og:url" content="{DOMAIN}/about/">
 <meta property="og:image" content="{DOMAIN}/og/about.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -282,8 +329,8 @@ def build() -> str:
         <span data-i18n="ab.crumbSelf">About</span>
       </nav>
       <p class="kicker" data-i18n="ab.kicker">Who does the work</p>
-      <h1><span data-i18n="ab.h1a">Two people, and</span> <em data-i18n="ab.h1b">both of them senior.</em></h1>
-      <p class="deck" data-i18n="ab.deck">Most consultancies sell you a partner and staff the project with someone else. This page exists so you know exactly who shows up: two engineers, named, with the certifications and the scars to match.</p>
+      <h1><span data-i18n="ab.h1a">Three engineers,</span> <em data-i18n="ab.h1b">all of them senior.</em></h1>
+      <p class="deck" data-i18n="ab.deck">Most consultancies sell you a partner and staff the project with someone else. This page exists so you know exactly who shows up: three engineers, named, with the certifications and the scars to match.</p>
       <div class="btnrow">
         <a class="btn btn-fill" href="#contact" data-i18n="ab.cta1">Book a technical assessment</a>
         <a class="btn btn-line" href="/work/" data-i18n="ab.cta2">See what we have built</a>
@@ -294,7 +341,7 @@ def build() -> str:
       <dl>
         <div class="filerow"><dt data-i18n="ab.k1">Based in</dt><dd data-i18n="ab.v1">Querétaro, México</dd></div>
         <div class="filerow"><dt data-i18n="ab.k2">Working languages</dt><dd>EN / ES</dd></div>
-        <div class="filerow"><dt data-i18n="ab.k3">Team size</dt><dd data-i18n="ab.v3">Two, both senior</dd></div>
+        <div class="filerow"><dt data-i18n="ab.k3">Team size</dt><dd data-i18n="ab.v3">Three, all senior</dd></div>
         <div class="filerow"><dt data-i18n="ab.k4">Delivery</dt><dd data-i18n="ab.v4">Remote, overlap hours agreed</dd></div>
         <div class="filerow"><dt data-i18n="ab.k5">Entry point</dt><dd data-i18n="ab.v5">Two-week assessment</dd></div>
       </dl>
@@ -360,15 +407,16 @@ def build_dict() -> str:
         "ab.crumbHome": "Inicio",
         "ab.crumbSelf": "Nosotros",
         "ab.kicker": "Quién hace el trabajo",
-        "ab.h1a": "Dos personas, y",
-        "ab.h1b": "las dos senior.",
-        "ab.deck": "Casi toda consultoría te vende un socio y luego asigna el proyecto a alguien más. Esta página existe para que sepas exactamente quién se presenta: dos ingenieros, con nombre, con las certificaciones y las cicatrices que lo respaldan.",
+        "ab.h1a": "Tres ingenieros,",
+        "ab.h1b": "los tres senior.",
+        "ab.deck": "Casi toda consultoría te vende un socio y luego asigna el proyecto a alguien más. Esta página existe para que sepas exactamente quién se presenta: tres ingenieros, con nombre, con las certificaciones y las cicatrices que lo respaldan.",
+        "ab.mockNote": "Foto en camino",
         "ab.cta1": "Agenda un diagnóstico técnico",
         "ab.cta2": "Ver lo que hemos construido",
         "ab.cardHead": "El estudio",
         "ab.k1": "Con base en", "ab.v1": "Querétaro, México",
         "ab.k2": "Idiomas de trabajo",
-        "ab.k3": "Tamaño del equipo", "ab.v3": "Dos, ambos senior",
+        "ab.k3": "Tamaño del equipo", "ab.v3": "Tres, todos senior",
         "ab.k4": "Entrega", "ab.v4": "Remoto, con horas de traslape acordadas",
         "ab.k5": "Punto de entrada", "ab.v5": "Diagnóstico de dos semanas",
         "ab.stamp": "Trabajas con las personas de esta página.",

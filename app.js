@@ -276,4 +276,59 @@
         .then(function () { busy(false); });
     });
   })();
+
+  /* ---------------------------------------------------------------
+     Botón flotante de WhatsApp (global, en todas las páginas)
+     -----------------------------------------------------------------
+     El número vive AQUÍ, en un solo lugar. Cámbialo por el real.
+     Formato E.164 sin "+", sin espacios ni guiones (ej. 524421234567). */
+  var WA_NUMBER = "525500000000"; /* TODO: PLACEHOLDER — cambiar por el número real */
+  var WA_TEXT = "Hi Technical Transformation Studio — I'd like to talk about a project.";
+
+  (function () {
+    if (!WA_NUMBER || WA_NUMBER.indexOf("0000") !== -1) {
+      /* Placeholder sin definir: no montamos el botón para no mandar a un número
+         inexistente. En cuanto WA_NUMBER sea real, aparece solo. */
+      if (window.console) { console.warn("[wa] WA_NUMBER es placeholder; botón de WhatsApp oculto."); }
+      return;
+    }
+    var a = document.createElement("a");
+    a.className = "wa-float";
+    a.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_TEXT);
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.setAttribute("aria-label", t("wa.label", "Chat on WhatsApp"));
+
+    var NS = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "0 0 32 32");
+    svg.setAttribute("aria-hidden", "true");
+    var path = document.createElementNS(NS, "path");
+    path.setAttribute("d", "M16 .5C7.44.5.5 7.44.5 16c0 2.82.74 5.46 2.03 7.76L.5 31.5l7.93-2.08A15.44 15.44 0 0 0 16 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.2c-2.5 0-4.9-.67-7-1.94l-.5-.3-4.7 1.23 1.25-4.58-.33-.53A12.7 12.7 0 1 1 16 28.7zm7.02-9.5c-.38-.19-2.27-1.12-2.62-1.25-.35-.13-.6-.19-.86.19-.25.38-.98 1.25-1.2 1.5-.22.25-.44.28-.82.09-.38-.19-1.62-.6-3.08-1.9-1.14-1.02-1.9-2.28-2.13-2.66-.22-.38-.02-.59.17-.78.17-.17.38-.44.57-.66.19-.22.25-.38.38-.63.13-.25.06-.47-.03-.66-.09-.19-.86-2.08-1.18-2.85-.31-.73-.63-.63-.86-.64l-.73-.01c-.25 0-.66.09-1 .47-.34.38-1.31 1.28-1.31 3.13s1.34 3.63 1.53 3.88c.19.25 2.64 4.03 6.4 5.65.9.39 1.6.62 2.14.8.9.28 1.72.24 2.37.15.72-.11 2.27-.93 2.59-1.83.32-.9.32-1.66.22-1.83-.09-.16-.34-.25-.72-.44z");
+    svg.appendChild(path);
+    a.appendChild(svg);
+    document.body.appendChild(a);
+  })();
+
+  /* ---------------------------------------------------------------
+     Link "Partnership" en el footer (alianza con Levzys / Ricardo)
+     Se inyecta junto a Privacidad/Términos en todas las páginas. */
+  (function () {
+    var year = document.getElementById("year");
+    if (!year || !year.parentNode) { return; }
+    var sep = document.createTextNode(" · ");
+    var a = document.createElement("a");
+    a.className = "footer-partner";
+    a.href = "https://levzys.com";
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    /* Inyectado después de que i18n.js hizo su barrido, así que no lleva
+       data-i18n: se traduce a mano aquí y en cada cambio de idioma. t() devuelve
+       el fallback cuando la clave no existe (inglés), así que ES↔EN funciona. */
+    function paint() { a.textContent = t("footer.partnership", "Partnership"); }
+    paint();
+    document.addEventListener("tts:locale", paint);
+    year.parentNode.insertBefore(sep, year.nextSibling);
+    year.parentNode.insertBefore(a, sep.nextSibling);
+  })();
 })();

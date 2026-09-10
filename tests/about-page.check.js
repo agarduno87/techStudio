@@ -46,9 +46,11 @@ $("langSelect").dispatchEvent(new window.Event("change"));
 check("h1 traducido", document.querySelector("h1").textContent !== "" && document.documentElement.lang === "es",
       document.querySelector("h1").textContent.slice(0,60));
 check("migas traducidas", document.querySelector('[data-i18n="ab.crumbHome"]').textContent === "Inicio");
-check("dos personas", document.querySelectorAll(".person").length === 2);
-check("dos retratos", document.querySelectorAll(".person-photo img").length === 2);
-check("nombres intactos", [...document.querySelectorAll(".person-name")].map(e=>e.textContent).join("|") === "Antonio Garduño|Samuel González",
+check("tres personas", document.querySelectorAll(".person").length === 3);
+check("dos retratos reales + un mock",
+      document.querySelectorAll(".person-photo img").length === 2 &&
+      document.querySelectorAll(".person-photo.is-mock").length === 1);
+check("nombres intactos", [...document.querySelectorAll(".person-name")].map(e=>e.textContent).join("|") === "Antonio Garduño|Samuel González|Ricardo Vázquez",
       [...document.querySelectorAll(".person-name")].map(e=>e.textContent).join("|"));
 check("alt traducido", document.querySelector('[data-i18n-alt="ab.p1alt"]').alt.startsWith("Retrato"),
       document.querySelector('[data-i18n-alt="ab.p1alt"]').alt);
