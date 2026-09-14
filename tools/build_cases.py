@@ -97,9 +97,9 @@ CASES = [
     },
     {
         "slug": "attack-surface-automation",
-        "practice": "cybersecurity",
-        "kicker_en": "Cybersecurity · Public university",
-        "kicker_es": "Ciberseguridad · Universidad pública",
+        "practice": "ai-automation",
+        "kicker_en": "AI &amp; Automation · Public university",
+        "kicker_es": "IA y automatización · Universidad pública",
         "client_en": "One of Mexico's largest public universities",
         "client_es": "Una de las universidades públicas más grandes de México",
         "title_en": "Attack Surface Assessment Automated: From Twelve Hours of Manual Analysis to Eight Minutes per Subdomain",
@@ -154,9 +154,9 @@ CASES = [
     },
     {
         "slug": "reporting-engine",
-        "practice": "ai-automation",
-        "kicker_en": "AI &amp; Automation · Enterprise reporting",
-        "kicker_es": "IA y automatización · Reporteo enterprise",
+        "practice": "data-analytics",
+        "kicker_en": "Data, Analytics &amp; Engineering · Enterprise reporting",
+        "kicker_es": "Datos, analítica e ingeniería · Reporteo enterprise",
         "client_en": "Enterprise reporting workflow",
         "client_es": "Flujo de reporteo enterprise",
         "title_en": "Weekly Reporting Automation: Three Person-Hours a Week Became Twenty Minutes of Review",
@@ -268,9 +268,9 @@ CASES = [
     },
     {
         "slug": "aaif",
-        "practice": "ai-automation",
-        "kicker_en": "AI &amp; Automation · Internal framework",
-        "kicker_es": "IA y automatización · Framework interno",
+        "practice": "technical-delivery",
+        "kicker_en": "Technical Delivery · Internal framework",
+        "kicker_es": "Entrega técnica · Framework interno",
         "client_en": "Internal delivery framework",
         "client_es": "Framework interno de entrega",
         "title_en": "AAIF: An AI Operating Framework of 18 Master Skills That Keeps Delivery Consistent",
@@ -328,7 +328,7 @@ PRACTICE_NAMES = {
     "cybersecurity": ("Cybersecurity", "Ciberseguridad"),
     "ai-automation": ("AI &amp; Automation", "IA y automatización"),
     "software-engineering": ("Software Engineering", "Ingeniería de software"),
-    "data-analytics": ("Data &amp; Analytics", "Datos y analítica"),
+    "data-analytics": ("Data, Analytics &amp; Engineering", "Datos, analítica e ingeniería"),
     "technical-delivery": ("Technical Delivery", "Entrega técnica"),
 }
 
