@@ -1,12 +1,14 @@
-# techStudio
+# Datara Hub  (repositorio: techStudio)
 
-Estudio técnico de Antonio Garduño y Samuel González. Software, automatización
-con IA y ciberseguridad. Base en Querétaro, México.
+Hub técnico de Antonio Garduño, Samuel González y Ricardo Vázquez. Software,
+automatización con IA, ciberseguridad, datos e ingeniería, delivery y web. Base
+en Querétaro, México.
 
-**El nombre no está decidido.** "techStudio" es provisional: `techstudio.com`
-está ocupado y el término está saturado (TechStudio Solutions en Singapur,
-TechStudio AR, techstudio.ch, Techstudio TV). Hasta que se decida, no se compra
-dominio y el sitio vive en GitHub Pages.
+**Nombre decidido: Datara Hub.** Dominio elegido: `datarahub.com` (verificado
+libre por RDAP; falta comprarlo). El REPOSITORIO sigue llamándose `techStudio`,
+así que el build de Pages usa `--base /techStudio`. La marca visible, el
+monograma (**DH**), títulos, OG y JSON-LD ya dicen "Datara Hub". Para cambiar el
+dominio en todo el repo de un tiro: `python3 tools/set_domain.py <url>`.
 
 ## Estado
 

@@ -1,5 +1,5 @@
 /*
-  Technical Transformation Studio — i18n.js
+  Datara Hub — i18n.js
 
   Motor de idiomas. Dos decisiones que evitan errores al ejecutar en local:
 

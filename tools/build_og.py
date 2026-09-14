@@ -82,9 +82,9 @@ def card(slug: str, kicker: str, title: str) -> None:
     mono_box = [pad + 44, pad + 44, pad + 44 + 72, pad + 44 + 72]
     d.rectangle(mono_box, outline=PAPER, width=2)
     f_mark = font(FONT_SERIF, 34)
-    b = d.textbbox((0, 0), "TS", font=f_mark)
+    b = d.textbbox((0, 0), "DH", font=f_mark)
     d.text((mono_box[0] + (72 - (b[2] - b[0])) / 2 - b[0],
-            mono_box[1] + (72 - (b[3] - b[1])) / 2 - b[1]), "TS", font=f_mark, fill=PAPER)
+            mono_box[1] + (72 - (b[3] - b[1])) / 2 - b[1]), "DH", font=f_mark, fill=PAPER)
 
     f_kick = font(FONT_MONO, 20)
     d.text((pad + 140, pad + 62), kicker.upper()[:46], font=f_kick, fill=GOLD)
@@ -103,7 +103,7 @@ def card(slug: str, kicker: str, title: str) -> None:
         y += lh
 
     f_foot = font(FONT_MONO, 20)
-    d.text((pad + 44, H - pad - 56), "TECHNICAL TRANSFORMATION STUDIO · QUERÉTARO, MX",
+    d.text((pad + 44, H - pad - 56), "DATARA HUB · QUERÉTARO, MX",
            font=f_foot, fill=MUTED)
 
     out = ROOT / "og"

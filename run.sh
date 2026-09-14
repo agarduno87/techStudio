@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Technical Transformation Studio — arranque local.
+# Datara Hub — arranque local.
 #
 #   ./run.sh          levanta sitio + API en http://127.0.0.1:8000
 #   ./run.sh 8080     usa otro puerto

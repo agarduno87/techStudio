@@ -23,7 +23,7 @@ window.ttsRegisterDictionary("es", {
   "hero.kicker": "Servicios · Alcance · Límites",
   "hero.h1a": "Trabajo técnico, entregado bajo un",
   "hero.h1b": "alcance escrito.",
-  "hero.deck": "Seis prácticas para empresas que necesitan ejecución técnica senior sin contratar un equipo completo. Cada proyecto declara qué incluye, qué excluye y qué recibes al final.",
+  "hero.deck": "Un hub, seis prácticas técnicas senior — para empresas que necesitan ejecución real sin contratar un equipo completo. Cada proyecto declara qué incluye, qué excluye y qué recibes al final.",
   "hero.cta1": "Agenda un diagnóstico técnico",
   "hero.cta2": "Ver las prácticas",
 
@@ -40,7 +40,7 @@ window.ttsRegisterDictionary("es", {
   "file.stamp": "El alcance se acuerda por escrito antes de empezar.",
 
   "pr.kicker": "Seis prácticas",
-  "pr.h2": "Un solo socio técnico. Seis capacidades, con el mismo peso.",
+  "pr.h2": "Un solo hub. Seis capacidades técnicas, con el mismo peso.",
   "pr.intro": "Combinamos ingeniería, análisis de negocio y liderazgo de programas técnicos, en vez de mandar cada problema a un proveedor distinto. Cada práctica declara sus límites de frente.",
 
   "ledger.in": "Incluye",

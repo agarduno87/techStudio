@@ -1,4 +1,4 @@
-# Technical Transformation Studio — sitio comercial (MVP)
+# Datara Hub — sitio comercial (MVP)
 
 Página de servicios "Dossier": cinco prácticas con el mismo peso, cada una con su
 ledger de alcance, más la calculadora del costo del trabajo manual. Inglés y español,

@@ -34,7 +34,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DOMAIN = "https://tu-dominio.com"
+DOMAIN = "https://datarahub.com"
 
 E = html.escape
 
@@ -312,7 +312,7 @@ CASES = [
             ("18", "master skills, each with internal structure", "skills maestras, cada una con estructura propia"),
             ("12–15 min", "for a long deliverable, end to end", "para un entregable largo, de punta a punta"),
             ("Minimal", "rework needed on the output", "retrabajo necesario sobre la salida"),
-            ("Reused", "across every engagement in this studio", "en todos los proyectos de este estudio"),
+            ("Reused", "across every engagement at Datara Hub", "en todos los proyectos de Datara Hub"),
         ],
         "lesson_h_en": "What this case actually shows",
         "lesson_h_es": "Qué demuestra realmente este caso",
@@ -335,7 +335,7 @@ PRACTICE_NAMES = {
 
 def nav_html(active_cta="#contact"):
     return f"""  <div class="wrap">
-    <a class="brand" href="/"><span class="monogram">TS</span><span>Technical Transformation Studio</span></a>
+    <a class="brand" href="/"><span class="monogram">DH</span><span>Datara Hub</span></a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
     <nav class="mainnav" id="mainnav">
       <a href="/#practices" data-i18n="nav.practices">Practices</a>
@@ -443,7 +443,7 @@ def build_case(c: dict) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{E(c["title_en"])} | Technical Transformation Studio</title>
+<title>{E(c["title_en"])} | Datara Hub</title>
 <meta name="description" content="{E(c["desc_en"])}">
 
 <meta http-equiv="Content-Security-Policy"
@@ -575,7 +575,7 @@ def build_case(c: dict) -> str:
 
 <footer>
   <div class="wrap">
-    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>Datara Hub · Querétaro, México</div>
     <div>
       <a href="/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
       <a href="/legal/terms/" data-i18n="footer.terms">Terms</a> ·
@@ -680,7 +680,7 @@ def build_index() -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Case Studies: Measured Results from Real Engagements | Technical Transformation Studio</title>
+<title>Case Studies: Measured Results from Real Engagements | Datara Hub</title>
 <meta name="description" content="Five engagements with the numbers attached: a phishing takedown in three days, an attack surface assessment cut to eight minutes per subdomain, and a weekly report cut from three person-hours to twenty minutes.">
 
 <meta http-equiv="Content-Security-Policy"
@@ -764,7 +764,7 @@ def build_index() -> str:
 
 <footer>
   <div class="wrap">
-    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>Datara Hub · Querétaro, México</div>
     <div>
       <a href="/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
       <a href="/legal/terms/" data-i18n="footer.terms">Terms</a> ·

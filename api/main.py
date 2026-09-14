@@ -1,5 +1,5 @@
 """
-Technical Transformation Studio — servidor de la aplicación.
+Datara Hub — servidor de la aplicación.
 
 Sirve DOS cosas desde un solo proceso y un solo puerto:
   1. El sitio estático (index.html, styles.css, app.js, i18n/…)

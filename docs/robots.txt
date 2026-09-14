@@ -1,4 +1,4 @@
-# robots.txt — Technical Transformation Studio
+# robots.txt — Datara Hub
 # El dominio del Sitemap se ajusta con tools/set_domain.py cuando exista.
 
 # Buscadores clásicos: acceso completo salvo la API.
@@ -48,5 +48,5 @@ Disallow: /
 User-agent: Amazonbot
 Disallow: /
 
-Sitemap: https://tu-dominio.com/sitemap.xml
-Host: tu-dominio.com
+Sitemap: https://datarahub.com/sitemap.xml
+Host: datarahub.com

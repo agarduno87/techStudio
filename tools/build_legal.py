@@ -29,7 +29,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DOMAIN = "https://tu-dominio.com"
+DOMAIN = "https://datarahub.com"
 E = html.escape
 
 PAGES = [
@@ -73,8 +73,8 @@ PAGES = [
              [("The site is served over HTTPS with a strict content security policy. The contact form is rate limited and validated on the server. Credentials are held in environment variables, never in the code or in anything your browser downloads.",
                "El sitio se sirve por HTTPS con una política de seguridad de contenido estricta. El formulario tiene límite de envíos y validación en el servidor. Las credenciales viven en variables de entorno, nunca en el código ni en nada que descargue tu navegador.")]),
             ("Contact", "Contacto",
-             [("Technical Transformation Studio, Santiago de Querétaro, México. For any request about your data, use the contact form or the address published on the site.",
-               "Technical Transformation Studio, Santiago de Querétaro, México. Para cualquier solicitud sobre tus datos, usa el formulario de contacto o la dirección publicada en el sitio.")]),
+             [("Datara Hub, Santiago de Querétaro, México. For any request about your data, use the contact form or the address published on the site.",
+               "Datara Hub, Santiago de Querétaro, México. Para cualquier solicitud sobre tus datos, usa el formulario de contacto o la dirección publicada en el sitio.")]),
         ],
     },
     {
@@ -91,8 +91,8 @@ PAGES = [
         "deck_es": "Estos términos cubren el sitio web. No son el contrato del proyecto: ese es un documento aparte y firmado, y donde ambos difieran, gana el firmado.",
         "sections": [
             ("What this site is", "Qué es este sitio",
-             [("A description of services offered by Technical Transformation Studio, based in Santiago de Querétaro, México. The content is informational and does not by itself create a client relationship or an obligation to provide any service.",
-               "Una descripción de los servicios que ofrece Technical Transformation Studio, con base en Santiago de Querétaro, México. El contenido es informativo y por sí mismo no crea una relación de cliente ni obligación de prestar ningún servicio.")]),
+             [("A description of services offered by Datara Hub, based in Santiago de Querétaro, México. The content is informational and does not by itself create a client relationship or an obligation to provide any service.",
+               "Una descripción de los servicios que ofrece Datara Hub, con base en Santiago de Querétaro, México. El contenido es informativo y por sí mismo no crea una relación de cliente ni obligación de prestar ningún servicio.")]),
             ("Prices and timelines", "Precios y plazos",
              [("Any figure published here is an indicative band for designing an engagement, not a quote. Durations are typical, not guaranteed. The binding numbers are the ones in a written proposal signed by both sides.",
                "Cualquier cifra publicada aquí es una banda indicativa para diseñar un proyecto, no una cotización. Las duraciones son típicas, no garantizadas. Los números que obligan son los de una propuesta escrita y firmada por ambas partes.")]),
@@ -105,8 +105,8 @@ PAGES = [
               ("Requesting a security service does not authorise it. The authorisation is a separate document.",
                "Solicitar un servicio de seguridad no lo autoriza. La autorización es un documento aparte.")]),
             ("Intellectual property", "Propiedad intelectual",
-             [("The text, structure and images of this site belong to the studio. The deliverables of an engagement — source code, documentation, data — belong to the client, from the first commit, as stated in the engagement contract.",
-               "El texto, la estructura y las imágenes de este sitio son del estudio. Los entregables de un proyecto — código fuente, documentación, datos — son del cliente, desde el primer commit, según lo establece el contrato del proyecto.")]),
+             [("The text, structure and images of this site belong to Datara Hub. The deliverables of an engagement — source code, documentation, data — belong to the client, from the first commit, as stated in the engagement contract.",
+               "El texto, la estructura y las imágenes de este sitio son de Datara Hub. Los entregables de un proyecto — código fuente, documentación, datos — son del cliente, desde el primer commit, según lo establece el contrato del proyecto.")]),
             ("Limitation", "Limitación",
              [("The site is provided as is. We make no warranty that it will be uninterrupted or error free, and we are not liable for decisions taken solely on the basis of information published here. Bring your situation to us and we will tell you what applies to it.",
                "El sitio se ofrece tal cual. No garantizamos que esté libre de interrupciones o errores, y no somos responsables de decisiones tomadas únicamente con base en la información publicada aquí. Tráenos tu situación y te decimos qué aplica en tu caso.")]),
@@ -120,7 +120,7 @@ PAGES = [
 
 def nav_html():
     return """  <div class="wrap">
-    <a class="brand" href="/"><span class="monogram">TS</span><span>Technical Transformation Studio</span></a>
+    <a class="brand" href="/"><span class="monogram">DH</span><span>Datara Hub</span></a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
     <nav class="mainnav" id="mainnav">
       <a href="/#practices" data-i18n="nav.practices">Practices</a>
@@ -165,7 +165,7 @@ def build(p: dict) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{E(p["title_en"])} | Technical Transformation Studio</title>
+<title>{E(p["title_en"])} | Datara Hub</title>
 <meta name="description" content="{E(p["desc_en"])}">
 
 <meta http-equiv="Content-Security-Policy"
@@ -222,7 +222,7 @@ def build(p: dict) -> str:
 
 <footer>
   <div class="wrap">
-    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>Datara Hub · Querétaro, México</div>
     <div>
       <a href="/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
       <a href="/legal/terms/" data-i18n="footer.terms">Terms</a> ·

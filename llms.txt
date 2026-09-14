@@ -1,12 +1,12 @@
-# Technical Transformation Studio
+# Datara Hub
 
-> Senior technical studio in Querétaro, México. Software engineering, AI automation,
+> Senior technical hub in Querétaro, México. Software engineering, AI automation,
 > cybersecurity, data engineering & BI, technical delivery, and web & growth.
 > Work is delivered under a written scope, in English or Spanish, and handed over
 > with the source code, documentation and credentials.
 
 ## What it is
-- A three-person senior studio: Antonio Garduño (technical director), Samuel González
+- A three-person senior team: Antonio Garduño (technical director), Samuel González
   (software & automation engineer), Ricardo Vázquez (data engineer & software developer).
 - No junior pyramid — you work with the three named people.
 - Entry point: a two-week technical assessment (findings + a roadmap you own, no
@@ -34,13 +34,13 @@
 - Not a staffing agency; scope is agreed in writing before work begins.
 - Penetration testing is scoped and requires written authorisation and agreed rules of
   engagement — no full-scope red-team, social engineering or physical intrusion.
-- Source code, documentation and credentials are handed over; studio access is revoked
+- Source code, documentation and credentials are handed over; our access is revoked
   at closure.
 
 ## Links
-- Home: https://tu-dominio.com/
-- About the team: https://tu-dominio.com/about/
-- Practices: https://tu-dominio.com/#practices
-- Packages: https://tu-dominio.com/#pricing
-- Case studies: https://tu-dominio.com/work/
-- Contact: https://tu-dominio.com/#contact
+- Home: https://datarahub.com/
+- About the team: https://datarahub.com/about/
+- Practices: https://datarahub.com/#practices
+- Packages: https://datarahub.com/#pricing
+- Case studies: https://datarahub.com/work/
+- Contact: https://datarahub.com/#contact

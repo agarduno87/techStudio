@@ -29,10 +29,10 @@ ROOT = Path(__file__).resolve().parent.parent
 NAVY = (14, 36, 57)        # --ink   #0E2439
 GOLD = (201, 162, 39)      # --gold-soft #C9A227
 PAPER = (244, 246, 248)    # --paper-2  #F4F6F8
-LETTERS = "TS"
+LETTERS = "DH"
 
-SVG = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Technical Transformation Studio">
-  <title>Technical Transformation Studio</title>
+SVG = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Datara Hub">
+  <title>Datara Hub</title>
   <rect width="64" height="64" rx="8" fill="#0E2439"/>
   <rect x="5" y="5" width="54" height="54" rx="5" fill="none" stroke="#C9A227" stroke-width="2"/>
   <text x="32" y="44"
@@ -43,8 +43,8 @@ SVG = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img"
 """
 
 MANIFEST = """{
-  "name": "Technical Transformation Studio",
-  "short_name": "TTS",
+  "name": "Datara Hub",
+  "short_name": "Datara Hub",
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
