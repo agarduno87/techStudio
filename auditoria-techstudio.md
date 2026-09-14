@@ -1,8 +1,8 @@
-# Auditoría SEO + GEO — techStudio (Technical Transformation Studio)
+# Auditoría SEO + GEO — techStudio (Datara Hub)
 
 - **Fecha:** 2026-09-10 (2ª pasada, tras aplicar los fixes de nuestro lado)
 - **URL auditada (viva):** https://agarduno87.github.io/techStudio/ (GitHub Pages, project page)
-- **Dominio de producción:** ❌ **no existe todavía** — el nombre no está decidido y no hay dominio comprado. Todo el sitio referencia el placeholder `https://tu-dominio.com` (swappable de un tiro con `tools/set_domain.py`).
+- **Dominio de producción:** ❌ **no existe todavía** — el nombre no está decidido y no hay dominio comprado. Todo el sitio referencia el placeholder `https://datarahub.com` (swappable de un tiro con `tools/set_domain.py`).
 - **Plataforma:** sitio estático (HTML/CSS/JS) + backend FastAPI (dev); producción prevista en PHP/Neubox.
 - **Salud SEO:** 70/100 🟡 (hygiene técnica ya corregida; quedan dominio, deploy y ES indexable).
 - **Salud GEO:** 55/100 🟡 (`llms.txt` + `robots.txt` pro-IA + nodo `WebSite`/`Organization` ya listos; falta el dominio vivo e indexable).
@@ -74,7 +74,7 @@ Pendiente hasta que exista nombre + dominio (antes no hay nada que posicionar). 
 
 **PASO 1 — Decidir nombre y comprar dominio.** 🔴 BLOQUEO RAÍZ
 - Problema: sin dominio, nada indexa ni se cita. Usar la skill `naming-branding` (verificar disponibilidad ANTES de proponer).
-- Al cerrarlo: centralizar el dominio en una sola variable (hoy `DOMAIN = "https://tu-dominio.com"` está en `tools/build_pages.py`, `build_about.py` e index.html) y reemplazar de un tiro.
+- Al cerrarlo: centralizar el dominio en una sola variable (hoy `DOMAIN = "https://datarahub.com"` está en `tools/build_pages.py`, `build_about.py` e index.html) y reemplazar de un tiro.
 - Verificar: `curl -sI https://<dominio-real>/ | head -1` → `200`.
 
 **PASO 2 — Publicar bien (arreglar los 404 de enlaces internos).** 🔴

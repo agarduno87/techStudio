@@ -41,7 +41,7 @@ window.ttsRegisterDictionary("es", {
   "pg.step4d": "Código, configuración de hosting, credenciales y una sesión corta, para que puedas editar el sitio o moverlo sin volver a llamarnos.",
   "pg.exp1k": "Trayectoria",
   "pg.exp1t": "Sitios en producción, entregados",
-  "pg.exp1d": "Este estudio diseña, construye y publica sitios de producción de punta a punta — bilingües, accesibles y rápidos — y entrega el código, la configuración de hosting y la analítica al dueño en vez de rentárselos.",
+  "pg.exp1d": "Datara Hub diseña, construye y publica sitios de producción de punta a punta — bilingües, accesibles y rápidos — y entrega el código, la configuración de hosting y la analítica al dueño en vez de rentárselos.",
   "pg.exp2k": "Trayectoria",
   "pg.exp2t": "Integraciones que hacen que un formulario valga la pena",
   "pg.exp2d": "Trayectoria en ingeniería de soluciones e integraciones de APIs y sistemas: conectar sitios y formularios a CRMs, WhatsApp y flujos de notificación, para que un prospecto se capture, se enrute y se responda en vez de perderse en una bandeja.",

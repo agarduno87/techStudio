@@ -25,7 +25,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-DOMAIN = "https://tu-dominio.com"
+DOMAIN = "https://datarahub.com"
 
 # ---------------------------------------------------------------------------
 # CONTENIDO
@@ -523,8 +523,8 @@ PAGES = [
         "exp": [
             ("Production sites, shipped and handed over",
              "Sitios en producción, entregados",
-             "This studio designs, builds and ships production websites end to end — bilingual, accessible and fast — and hands over the source, the hosting setup and the analytics to the owner rather than renting them back.",
-             "Este estudio diseña, construye y publica sitios de producción de punta a punta — bilingües, accesibles y rápidos — y entrega el código, la configuración de hosting y la analítica al dueño en vez de rentárselos."),
+             "Datara Hub designs, builds and ships production websites end to end — bilingual, accessible and fast — and hands over the source, the hosting setup and the analytics to the owner rather than renting them back.",
+             "Datara Hub diseña, construye y publica sitios de producción de punta a punta — bilingües, accesibles y rápidos — y entrega el código, la configuración de hosting y la analítica al dueño en vez de rentárselos."),
             ("Integrations that make a form worth having",
              "Integraciones que hacen que un formulario valga la pena",
              "A background in solutions engineering and API and system integrations: connecting sites and forms to CRMs, WhatsApp and notification pipelines, so a lead is captured, routed and answered instead of lost in an inbox.",
@@ -561,7 +561,7 @@ E = html.escape
 
 def nav_html():
     return """  <div class="wrap">
-    <a class="brand" href="/"><span class="monogram">TS</span><span>Technical Transformation Studio</span></a>
+    <a class="brand" href="/"><span class="monogram">DH</span><span>Datara Hub</span></a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
     <nav class="mainnav" id="mainnav">
       <a href="/#practices" data-i18n="nav.practices">Practices</a>
@@ -826,7 +826,7 @@ def build_page(p: dict) -> str:
 
 <footer>
   <div class="wrap">
-    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>Datara Hub · Querétaro, México</div>
     <div>
       <a href="/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
       <a href="/legal/terms/" data-i18n="footer.terms">Terms</a> ·

@@ -52,7 +52,7 @@ def reset_rate_limit():
 def test_serves_index():
     r = client.get("/")
     assert r.status_code == 200
-    assert "Technical Transformation Studio" in r.text
+    assert "Datara Hub" in r.text
 
 
 def test_serves_assets():
@@ -424,7 +424,7 @@ def test_every_page_has_an_og_image():
         body = client.get(path).text
         assert 'property="og:image"' in body, path
         og = body.split('property="og:image" content="')[1].split('"')[0]
-        local = og.replace("https://tu-dominio.com", "")
+        local = og.replace("https://datarahub.com", "")
         assert client.get(local).status_code == 200, f"{path} apunta a {local}"
 
 

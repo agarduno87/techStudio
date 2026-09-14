@@ -51,5 +51,5 @@ window.ttsRegisterDictionary("es", {
   "cs.mn3": "Minimal",
   "cs.ml3": "retrabajo necesario sobre la salida",
   "cs.mn4": "Reused",
-  "cs.ml4": "en todos los proyectos de este estudio"
+  "cs.ml4": "en todos los proyectos de Datara Hub"
 });

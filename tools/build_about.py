@@ -39,7 +39,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DOMAIN = "https://tu-dominio.com"
+DOMAIN = "https://datarahub.com"
 E = html.escape
 
 PEOPLE = [
@@ -53,12 +53,12 @@ PEOPLE = [
         "bio_en": [
             "Mechatronics engineer with roughly a decade of professional experience, nine years of it in project and program management. For the last three and a half years he has owned technical delivery for Fortune 500 accounts at a NYSE-listed ad-verification platform — coordinating engineering, product and client teams across the United States and international markets, and running root-cause analysis on live incidents with revenue attached to them.",
             "Before that: Scrum Master on four parallel software workstreams, project manager in consulting, and a first career running safety, quality and environmental programmes on industrial plant floors. That last one matters more than it sounds. Risk management stops being a spreadsheet exercise when a mistake has physical consequences, and a plant is where you learn to talk to the shop floor and to the board in the same week.",
-            "He is a certified Gray Hat Web Penetration Tester and currently runs two live security engagements alongside the studio's build work. The through-line is the same across all of it: turn a business problem into a system that works, then hand it over.",
+            "He is a certified Gray Hat Web Penetration Tester and currently runs two live security engagements alongside Datara Hub's build work. The through-line is the same across all of it: turn a business problem into a system that works, then hand it over.",
         ],
         "bio_es": [
             "Ingeniero mecatrónico con alrededor de una década de experiencia profesional, nueve años de ella en gestión de proyectos y programas. Los últimos tres años y medio ha sido dueño de la entrega técnica de cuentas Fortune 500 en una plataforma global de verificación publicitaria cotizada en NYSE — coordinando equipos de ingeniería, producto y cliente en Estados Unidos y mercados internacionales, y dirigiendo el análisis de causa raíz de incidentes en vivo con ingresos de por medio.",
             "Antes de eso: Scrum Master de cuatro flujos de software en paralelo, project manager en consultoría, y una primera carrera dirigiendo programas de seguridad, calidad y medio ambiente en piso de planta industrial. Esto último pesa más de lo que parece. La gestión de riesgos deja de ser un ejercicio de hoja de cálculo cuando un error tiene consecuencias físicas, y una planta es donde se aprende a hablar con el piso y con el consejo en la misma semana.",
-            "Es Web Penetration Tester Gray Hat certificado y hoy lleva dos proyectos de seguridad vivos en paralelo al trabajo de construcción del estudio. El hilo conductor es el mismo en todo: convertir un problema de negocio en un sistema que funciona, y luego entregarlo.",
+            "Es Web Penetration Tester Gray Hat certificado y hoy lleva dos proyectos de seguridad vivos en paralelo al trabajo de construcción de Datara Hub. El hilo conductor es el mismo en todo: convertir un problema de negocio en un sistema que funciona, y luego entregarlo.",
         ],
         "focus_en": ["Technical delivery", "Cybersecurity", "Program management", "Client leadership"],
         "focus_es": ["Entrega técnica", "Ciberseguridad", "Gestión de programas", "Liderazgo de cuentas"],
@@ -147,7 +147,7 @@ PRINCIPLES = [
 
 def nav_html(cta="#contact"):
     return f"""  <div class="wrap">
-    <a class="brand" href="/"><span class="monogram">TS</span><span>Technical Transformation Studio</span></a>
+    <a class="brand" href="/"><span class="monogram">DH</span><span>Datara Hub</span></a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
     <nav class="mainnav" id="mainnav">
       <a href="/#practices" data-i18n="nav.practices">Practices</a>
@@ -253,7 +253,7 @@ def build() -> str:
         "@context": "https://schema.org",
         "@graph": [
             {"@type": "AboutPage", "@id": DOMAIN + "/about/", "url": DOMAIN + "/about/",
-             "name": "About — the people behind the studio"},
+             "name": "About — the people behind Datara Hub"},
             {"@type": "Person", "@id": DOMAIN + "/about/#antonio", "name": "Antonio Garduño",
              "jobTitle": "Founder and Technical Director",
              "worksFor": {"@id": DOMAIN + "/#studio"},
@@ -337,7 +337,7 @@ def build() -> str:
       </div>
     </div>
     <div class="filecard">
-      <h2 data-i18n="ab.cardHead">The studio</h2>
+      <h2 data-i18n="ab.cardHead">Datara Hub</h2>
       <dl>
         <div class="filerow"><dt data-i18n="ab.k1">Based in</dt><dd data-i18n="ab.v1">Querétaro, México</dd></div>
         <div class="filerow"><dt data-i18n="ab.k2">Working languages</dt><dd>EN / ES</dd></div>
@@ -382,7 +382,7 @@ def build() -> str:
 
 <footer>
   <div class="wrap">
-    <div>Technical Transformation Studio · Querétaro, México</div>
+    <div>Datara Hub · Querétaro, México</div>
     <div>
       <a href="/legal/privacy/" data-i18n="footer.privacy">Privacy</a> ·
       <a href="/legal/terms/" data-i18n="footer.terms">Terms</a> ·
@@ -413,7 +413,7 @@ def build_dict() -> str:
         "ab.mockNote": "Foto en camino",
         "ab.cta1": "Agenda un diagnóstico técnico",
         "ab.cta2": "Ver lo que hemos construido",
-        "ab.cardHead": "El estudio",
+        "ab.cardHead": "Datara Hub",
         "ab.k1": "Con base en", "ab.v1": "Querétaro, México",
         "ab.k2": "Idiomas de trabajo",
         "ab.k3": "Tamaño del equipo", "ab.v3": "Tres, todos senior",
