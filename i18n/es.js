@@ -133,6 +133,13 @@ window.ttsRegisterDictionary("es", {
   "p6.m3": "Negocios cuyo sitio no trae prospectos",
   "p6.c": "Construye un sitio que convierte →",
 
+  "cap1.blurb": "Herramientas internas, APIs y apps de negocio, entregadas con el código.",
+  "cap2.blurb": "Asistentes agénticos y automatización de reportes sobre tus propios datos.",
+  "cap3.blurb": "Pentesting web acotado y gobierno del riesgo, bajo autorización.",
+  "cap4.blurb": "Pipelines, warehouse, dashboards y BI que puedes defender.",
+  "cap5.blurb": "Gestión técnica de programas fraccional y liderazgo de cuentas.",
+  "cap6.blurb": "Sitios de conversión, SEO y formularios conectados a tu CRM o WhatsApp.",
+
   "calc.kicker": "El costo de dejarlo así",
   "calc.h2": "El trabajo manual no es gratis. Solo se factura como sueldo.",
   "calc.lead": "Mueve los controles hasta tu realidad. La cifra de la derecha es lo que te cuesta la versión manual cada año, antes de que nadie automatice nada.",

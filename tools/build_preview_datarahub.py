@@ -47,6 +47,44 @@ def recolor_comet(html: str) -> str:
     return _BRANDMARK.sub(_swap, html)
 
 
+# Grid compacto "de un vistazo": 6 tarjetas que enlazan a cada práctica detallada.
+# Reusa los títulos (pN.t, ya traducidos) y unas líneas cortas (capN.blurb).
+PRACTICES_GRID = (
+    '<div class="pgrid">'
+    '<a class="p" href="#cap1"><span class="dot"></span><div class="n">01</div>'
+    '<h3 data-i18n="p1.t">Software Engineering</h3>'
+    '<p data-i18n="cap1.blurb">Internal tools, APIs and business apps, handed over with the source.</p></a>'
+    '<a class="p" href="#cap2"><span class="dot"></span><div class="n">02</div>'
+    '<h3 data-i18n="p2.t">AI &amp; Automation</h3>'
+    '<p data-i18n="cap2.blurb">Agentic assistants and reporting automation over your own data.</p></a>'
+    '<a class="p" href="#cap3"><span class="dot"></span><div class="n">03</div>'
+    '<h3 data-i18n="p3.t">Cybersecurity</h3>'
+    '<p data-i18n="cap3.blurb">Scoped web-app pentesting and risk governance, under authorisation.</p></a>'
+    '<a class="p" href="#cap4"><span class="dot"></span><div class="n">04</div>'
+    '<h3 data-i18n="p4.t">Data, Analytics &amp; Engineering</h3>'
+    '<p data-i18n="cap4.blurb">Pipelines, warehouse, dashboards and BI you can defend.</p></a>'
+    '<a class="p" href="#cap5"><span class="dot"></span><div class="n">05</div>'
+    '<h3 data-i18n="p5.t">Technical Delivery &amp; Account Leadership</h3>'
+    '<p data-i18n="cap5.blurb">Fractional technical program management and account leadership.</p></a>'
+    '<a class="p" href="#cap6"><span class="dot"></span><div class="n">06</div>'
+    '<h3 data-i18n="p6.t">Web &amp; Growth</h3>'
+    '<p data-i18n="cap6.blurb">Conversion sites, SEO and forms wired to your CRM or WhatsApp.</p></a>'
+    '</div>\n\n    '
+)
+
+
+def inject_practices_grid(html: str) -> str:
+    """Inserta el grid antes de la 1ª práctica y pone id="capN" en las 6 (para el ancla)."""
+    state = {"n": 0}
+
+    def repl(_m):
+        state["n"] += 1
+        pre = PRACTICES_GRID if state["n"] == 1 else ""
+        return f'{pre}<article class="practice" id="cap{state["n"]}">'
+
+    return re.sub(r'<article class="practice">', repl, html)
+
+
 def main() -> None:
     # 1. Empaquetar el sitio completo hacia docs/datarahub/
     cmd = [sys.executable, str(ROOT / "tools" / "build_github_pages.py"),
@@ -60,10 +98,13 @@ def main() -> None:
     (OUT / "styles.css").write_text(dark, encoding="utf-8")
 
     # 3. Recolorear el cometa + theme-color oscuro, en cada HTML del preview
+    home = (OUT / "index.html").resolve()
     n = 0
     for page in OUT.rglob("*.html"):
         t = page.read_text(encoding="utf-8")
         new = recolor_comet(t).replace('content="#0E2439"', 'content="#08131A"')
+        if page.resolve() == home:  # el grid "de un vistazo" solo va en el home
+            new = inject_practices_grid(new)
         if new != t:
             page.write_text(new, encoding="utf-8")
             n += 1

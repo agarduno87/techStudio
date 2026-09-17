@@ -99,6 +99,17 @@ h3.ptitle{font-family:var(--serif);font-weight:400;font-size:29px;line-height:1.
 .plink{font-size:14px;font-weight:600;text-decoration:none;color:var(--emerald);border-bottom:1.5px solid rgba(16,185,129,.5);padding-bottom:2px}
 .plink:hover{border-bottom-color:var(--emerald)}
 
+/* ---------- grid compacto "de un vistazo" (índice de capacidades) ---------- */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 44px}
+.pgrid .p{border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--panel-2);position:relative;text-decoration:none;color:inherit;display:block;transition:border-color .15s ease,transform .15s ease}
+.pgrid .p:hover{border-color:var(--emerald);transform:translateY(-2px)}
+.pgrid .p .n{font-family:var(--mono);font-size:11px;color:var(--blue-soft)}
+.pgrid .p h3{font-size:17px;margin:8px 0 6px;font-weight:600;color:var(--ink)}
+.pgrid .p p{color:var(--muted);font-size:13.5px;margin:0}
+.pgrid .p .dot{position:absolute;top:18px;right:18px;width:8px;height:8px;border-radius:50%;background:var(--emerald);box-shadow:0 0 12px var(--emerald)}
+@media(max-width:800px){.pgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.pgrid{grid-template-columns:1fr}}
+
 /* ---------- calculadora ---------- */
 .calc{background:linear-gradient(180deg,var(--panel),var(--panel-2));padding:64px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line)}
 .calc .wrap{max-width:var(--max)}
