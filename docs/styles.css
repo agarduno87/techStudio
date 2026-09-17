@@ -31,6 +31,7 @@ a{color:inherit}
 .masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;letter-spacing:-.01em;font-size:15px}
 .monogram{width:38px;height:38px;flex:none;display:grid;place-items:center;border:1.5px solid var(--ink);color:var(--ink);font-family:var(--serif);font-size:15px}
+.brandmark{display:block;flex:none}
 .mainnav{display:flex;align-items:center;gap:20px;font-size:14px}
 .mainnav a{text-decoration:none;color:var(--muted);padding:6px 0;border-bottom:1px solid transparent}
 .mainnav a:hover{color:var(--ink);border-bottom-color:var(--gold)}
