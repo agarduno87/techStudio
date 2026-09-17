@@ -202,7 +202,7 @@ PAGES = [
             ("How much does an automation project cost?",
              "¿Cuánto cuesta un proyecto de automatización?",
              "An MVP typically starts around USD 4,500 and the exact figure depends on how many systems it has to touch. The assessment that precedes it starts around USD 1,500 and you keep the roadmap either way.",
-             "Un MVP arranca típicamente alrededor de USD 4,500 y la cifra exacta depende de cuántos sistemas tenga que tocar. El diagnóstico previo arranca alrededor de USD 1,500 y te quedas con la hoja de ruta pase lo que pase."),
+             "Un MVP arranca típicamente alrededor de MXN 55,000 y la cifra exacta depende de cuántos sistemas tenga que tocar. El diagnóstico previo arranca alrededor de MXN 15,000 y te quedas con la hoja de ruta pase lo que pase."),
             ("What if the process changes after we automate it?",
              "¿Y si el proceso cambia después de automatizarlo?",
              "Systems built here are meant to be edited: documented, versioned and handed to your team. Small changes should not require calling us back.",
