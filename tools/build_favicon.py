@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Genera los iconos del sitio a partir de la marca: monograma TS en dorado sobre
-navy, el mismo cuadro que aparece en la cabecera.
+Genera los iconos del sitio a partir de la marca: el logo COMETA en dorado sobre
+navy, el mismo mark que aparece en la cabecera.
 
 Uso:
     python3 tools/build_favicon.py
@@ -14,9 +14,7 @@ Salida (en la raíz del proyecto):
     icon-512.png         Android / PWA
     site.webmanifest     metadatos de instalación
 
-Para cambiar la marca, edita las constantes de aquí abajo y vuelve a ejecutar.
-Requiere Pillow solo para los PNG/ICO:  pip install Pillow
-El SVG se escribe a mano y no depende de nada.
+El SVG se escribe a mano; los PNG/ICO se dibujan con Pillow (tools/comet.py).
 """
 
 from __future__ import annotations
@@ -25,20 +23,25 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # para importar comet.py
 
-NAVY = (14, 36, 57)        # --ink   #0E2439
-GOLD = (201, 162, 39)      # --gold-soft #C9A227
-PAPER = (244, 246, 248)    # --paper-2  #F4F6F8
-LETTERS = "DH"
-
-SVG = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Datara Hub">
+# El SVG es la fuente moderna: cometa dorado sobre caja navy redondeada.
+# feGaussianBlur da el glow de la cabeza; el gradiente va del navy (cola, se funde
+# con el fondo) al dorado. Sin style= inline: la CSP del sitio queda contenta.
+SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Datara Hub">
   <title>Datara Hub</title>
-  <rect width="64" height="64" rx="8" fill="#0E2439"/>
-  <rect x="5" y="5" width="54" height="54" rx="5" fill="none" stroke="#C9A227" stroke-width="2"/>
-  <text x="32" y="44"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="32" font-weight="400" letter-spacing="0.5"
-        text-anchor="middle" fill="#F4F6F8">{LETTERS}</text>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16324C" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#C9A227" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="f" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.5"/></filter>
+  </defs>
+  <rect width="120" height="120" rx="20" fill="#0E2439"/>
+  <circle cx="20.53" cy="45.64" r="15" fill="#C9A227" opacity="0.30" filter="url(#f)"/>
+  <path d="M 60,18 A 42,42 0 1 1 20.53,45.64" fill="none" stroke="url(#g)" stroke-width="6.5" stroke-linecap="round"/>
+  <circle cx="60" cy="60" r="3.4" fill="#F4F6F8" opacity="0.9"/>
+  <circle cx="20.53" cy="45.64" r="7" fill="#C9A227"/>
 </svg>
 """
 
@@ -57,52 +60,24 @@ MANIFEST = """{
 
 
 def draw(size: int, radius_ratio: float = 0.125):
-    """Dibuja el icono a `size` px. Se renderiza al cuádruple y se reduce:
-    a 16 px el antialiasing es la diferencia entre una marca legible y una mancha."""
-    from PIL import Image, ImageDraw, ImageFont
+    """Dibuja el icono a `size` px. Se renderiza al cuádruple y se reduce, para que
+    el antialiasing conserve el trazo del cometa a 16 px."""
+    from PIL import Image, ImageDraw
+    from comet import draw_comet, NAVY
 
     scale = 4
     s = size * scale
     img = Image.new("RGBA", (s, s), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
 
-    # A 16 px cada píxel cuenta: se reduce el redondeo para no comerse el área útil.
     radius = int(s * (radius_ratio if size >= 32 else 0.07))
-    d.rounded_rectangle([0, 0, s - 1, s - 1], radius=radius, fill=NAVY)
+    d.rounded_rectangle([0, 0, s - 1, s - 1], radius=radius, fill=NAVY + (255,))
 
-    # Filete dorado: se omite por debajo de 32 px porque a ese tamaño
-    # se convierte en ruido y come el espacio de las letras.
-    if size >= 32:
-        inset = max(2, int(s * 0.08))
-        d.rounded_rectangle(
-            [inset, inset, s - 1 - inset, s - 1 - inset],
-            radius=max(2, radius - inset // 2),
-            outline=GOLD,
-            width=max(2, int(s * 0.031)),
-        )
-
-    font = None
-    for candidate in (
-        "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
-        "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
-        "/Library/Fonts/Georgia Bold.ttf",
-        "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
-    ):
-        if Path(candidate).exists():
-            # Las letras van más grandes en los tamaños chicos: al reducir, el
-            # antialiasing adelgaza el trazo y un serif fino se vuelve gris.
-            font = ImageFont.truetype(candidate, int(s * (0.46 if size >= 32 else 0.60)))
-            break
-    if font is None:
-        font = ImageFont.load_default()
-
-    box = d.textbbox((0, 0), LETTERS, font=font)
-    d.text(
-        ((s - (box[2] - box[0])) / 2 - box[0], (s - (box[3] - box[1])) / 2 - box[1]),
-        LETTERS,
-        font=font,
-        fill=PAPER if size >= 32 else (255, 255, 255),
-    )
+    # Cometa centrado. A tamaños chicos se engrosa el trazo para que no se difumine.
+    cx = cy = s / 2
+    r = s * 0.34
+    width_ratio = 0.12 if size >= 32 else 0.17
+    draw_comet(img, cx, cy, r, width_ratio=width_ratio)
 
     return img.resize((size, size), Image.LANCZOS)
 
@@ -120,10 +95,6 @@ def main() -> None:
         print("  Instálalo con:  pip install Pillow   y vuelve a correr esto.")
         sys.exit(0)
 
-    # El ICO se arma de mayor a menor: Pillow toma la primera imagen como base,
-    # y si es la chica escala hacia arriba y las grandes salen borrosas.
-    # Cada tamaño se dibuja por separado para que el filete dorado se decida
-    # por resolución y no por un reescalado.
     ico_sizes = [48, 32, 16]
     frames = [draw(n) for n in ico_sizes]
     frames[0].save(ROOT / "favicon.ico", format="ICO",
