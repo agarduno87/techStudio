@@ -53,7 +53,7 @@ OUT = ROOT / "docs"
 BLOCKED_DIRS = {"api", "tools", "tests", "assets", "docs", ".git", ".venv",
                 "venv", "__pycache__", ".pytest_cache", "node_modules"}
 BLOCKED_SUFFIX = {".py", ".sh", ".db", ".sqlite3", ".pyc", ".env", ".zip", ".xlsx", ".md"}
-BLOCKED_NAMES = {".env", ".env.example", ".gitignore", ".DS_Store", "_headers"}
+BLOCKED_NAMES = {".env", ".env.example", ".gitignore", ".DS_Store", "_headers", "styles-datarahub.css"}
 
 FORM_SHIM = """/* GitHub Pages no tiene backend: el formulario se envia por correo.
    Esto lo inyecta tools/build_pages.py y NO existe en la version de servidor. */
@@ -165,7 +165,12 @@ def main() -> None:
                     help="Dominio propio; escribe el archivo CNAME")
     ap.add_argument("--mailto", default="",
                     help="Correo al que va el formulario en la version estatica")
+    ap.add_argument("--out", default="docs",
+                    help="Carpeta de salida (default docs). P.ej. docs/datarahub para un preview.")
     args = ap.parse_args()
+
+    global OUT
+    OUT = ROOT / args.out
 
     base = args.base.rstrip("/")
     if base and not base.startswith("/"):
