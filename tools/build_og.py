@@ -71,20 +71,16 @@ def wrap(draw, text, f, max_width):
 
 def card(slug: str, kicker: str, title: str) -> None:
     from PIL import Image, ImageDraw
+    from comet import draw_comet
 
-    img = Image.new("RGB", (W, H), NAVY)
+    img = Image.new("RGBA", (W, H), NAVY + (255,))
     d = ImageDraw.Draw(img)
 
     pad = 80
     d.rectangle([pad, pad, W - pad, H - pad], outline=GOLD, width=2)
 
-    # Monograma
-    mono_box = [pad + 44, pad + 44, pad + 44 + 72, pad + 44 + 72]
-    d.rectangle(mono_box, outline=PAPER, width=2)
-    f_mark = font(FONT_SERIF, 34)
-    b = d.textbbox((0, 0), "DH", font=f_mark)
-    d.text((mono_box[0] + (72 - (b[2] - b[0])) / 2 - b[0],
-            mono_box[1] + (72 - (b[3] - b[1])) / 2 - b[1]), "DH", font=f_mark, fill=PAPER)
+    # Logo cometa (el mismo mark del sitio), donde antes iba el monograma "DH".
+    draw_comet(img, pad + 80, pad + 80, 38)
 
     f_kick = font(FONT_MONO, 20)
     d.text((pad + 140, pad + 62), kicker.upper()[:46], font=f_kick, fill=GOLD)
@@ -108,7 +104,7 @@ def card(slug: str, kicker: str, title: str) -> None:
 
     out = ROOT / "og"
     out.mkdir(exist_ok=True)
-    img.save(out / f"{slug}.png", "PNG", optimize=True)
+    img.convert("RGB").save(out / f"{slug}.png", "PNG", optimize=True)
     print(f"  og/{slug}.png")
 
 
