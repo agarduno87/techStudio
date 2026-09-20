@@ -352,8 +352,10 @@ def test_every_page_links_the_icons():
     paths += [f"/work/{s}/" for s in CASE_SLUGS]
     for path in paths:
         body = client.get(path).text
-        assert 'href="/favicon.svg"' in body, path
-        assert 'href="/favicon.ico"' in body, path
+        # El href puede llevar ?v=N para romper el caché del favicon, así que se
+        # comprueba el prefijo sin la comilla de cierre.
+        assert 'href="/favicon.svg' in body, path
+        assert 'href="/favicon.ico' in body, path
         assert 'rel="apple-touch-icon"' in body, path
 
 
