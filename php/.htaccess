@@ -1,0 +1,17 @@
+# Datara Hub — protección de la carpeta php/ en Apache (Neubox cPanel).
+
+# Nunca servir el archivo de configuración ni el esquema como descarga.
+<FilesMatch "^(config|config\.sample)\.php$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.(sql|md)$">
+    Require all denied
+</FilesMatch>
+
+# La respuesta del endpoint no se cachea.
+<IfModule mod_headers.c>
+    <FilesMatch "contact\.php$">
+        Header set Cache-Control "no-store"
+        Header set X-Content-Type-Options "nosniff"
+    </FilesMatch>
+</IfModule>
