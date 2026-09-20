@@ -443,13 +443,15 @@ def brief_model():
 
 
 
-def test_gold_on_paper_meets_wcag_aa():
-    """El dorado se usa en textos de 10–12 px sobre papel. Si alguien lo aclara
-    para que "se vea más bonito", el sitio deja de cumplir AA en contraste y
-    Lighthouse lo marca. Esta prueba fija el piso."""
+def test_text_on_bg_meets_wcag_aa():
+    """Diseño oscuro "datarahub": el texto principal (--ink) y el secundario
+    (--muted) van sobre el fondo (--bg). Si alguien oscurece el texto o aclara el
+    fondo "para que se vea más suave", el sitio deja de cumplir AA y Lighthouse lo
+    marca. Esta prueba fija el piso de contraste del cuerpo."""
     css = client.get("/styles.css").text
-    gold = css.split("--gold:")[1].split(";")[0].strip()
-    paper = css.split("--paper:")[1].split(";")[0].strip()
+
+    def token(name):
+        return css.split(f"--{name}:")[1].split(";")[0].strip()
 
     def luminance(hex_colour):
         hex_colour = hex_colour.lstrip("#")
@@ -458,9 +460,11 @@ def test_gold_on_paper_meets_wcag_aa():
                     for c in channels]
         return 0.2126 * adjusted[0] + 0.7152 * adjusted[1] + 0.0722 * adjusted[2]
 
-    a, b = luminance(gold), luminance(paper)
-    contrast = (max(a, b) + 0.05) / (min(a, b) + 0.05)
-    assert contrast >= 4.5, f"--gold {gold} sobre --paper {paper} da {contrast:.2f}:1"
+    bg = luminance(token("bg"))
+    for name in ("ink", "muted"):
+        fg = luminance(token(name))
+        contrast = (max(fg, bg) + 0.05) / (min(fg, bg) + 0.05)
+        assert contrast >= 4.5, f"--{name} sobre --bg da {contrast:.2f}:1"
 
 
 if __name__ == "__main__":

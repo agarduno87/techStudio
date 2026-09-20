@@ -29,10 +29,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 W, H = 1200, 630
-NAVY = (14, 36, 57)
-GOLD = (201, 162, 39)
+BG = (8, 19, 26)           # #08131A  fondo datarahub
+EMERALD = (16, 185, 129)   # #10B981  acento
+BLUE = (59, 130, 246)      # #3B82F6  cola del cometa
 PAPER = (244, 246, 248)
-MUTED = (169, 186, 203)
+MUTED = (141, 160, 173)    # #8DA0AD
 
 FONT_SERIF = [
     "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
@@ -73,17 +74,17 @@ def card(slug: str, kicker: str, title: str) -> None:
     from PIL import Image, ImageDraw
     from comet import draw_comet
 
-    img = Image.new("RGBA", (W, H), NAVY + (255,))
+    img = Image.new("RGBA", (W, H), BG + (255,))
     d = ImageDraw.Draw(img)
 
     pad = 80
-    d.rectangle([pad, pad, W - pad, H - pad], outline=GOLD, width=2)
+    d.rectangle([pad, pad, W - pad, H - pad], outline=EMERALD, width=2)
 
-    # Logo cometa (el mismo mark del sitio), donde antes iba el monograma "DH".
-    draw_comet(img, pad + 80, pad + 80, 38)
+    # Logo cometa esmeralda (el mismo mark del sitio), donde antes iba el monograma "DH".
+    draw_comet(img, pad + 80, pad + 80, 38, tail=BLUE, head=EMERALD, dot=PAPER)
 
     f_kick = font(FONT_MONO, 20)
-    d.text((pad + 140, pad + 62), kicker.upper()[:46], font=f_kick, fill=GOLD)
+    d.text((pad + 140, pad + 62), kicker.upper()[:46], font=f_kick, fill=EMERALD)
 
     # Título: se ajusta el cuerpo hasta que quepa en cuatro líneas
     max_w = W - 2 * pad - 88

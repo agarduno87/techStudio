@@ -16,7 +16,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#0E2439">
+<meta name="theme-color" content="#08131A">
 
 <!-- Iconos. El navegador pide /favicon.ico solo, sin que nadie se lo diga:
      por eso, sin archivo, aparece un 404 en la consola. Los <link> hacen el resto:
@@ -48,7 +48,7 @@
 
 <header class="masthead">
   <div class="wrap">
-    <a class="brand" href="#top"><svg class="brandmark" viewBox="0 0 120 120" width="40" height="40" aria-hidden="true"><defs><linearGradient id="dhg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#16324C" stop-opacity="0.15"/><stop offset="100%" stop-color="#C9A227" stop-opacity="1"/></linearGradient><filter id="dhf" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.5"/></filter></defs><circle cx="20.53" cy="45.64" r="14" fill="#C9A227" opacity="0.25" filter="url(#dhf)"/><path d="M 60,18 A 42,42 0 1 1 20.53,45.64" fill="none" stroke="url(#dhg)" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="60" r="3" fill="#0E2439" opacity="0.85"/><circle cx="20.53" cy="45.64" r="6.5" fill="#C9A227"/></svg><span>Datara Hub</span></a>
+    <a class="brand" href="#top"><svg class="brandmark" viewBox="0 0 120 120" width="40" height="40" aria-hidden="true"><defs><linearGradient id="dhg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3B82F6" stop-opacity="0.15"/><stop offset="100%" stop-color="#10B981" stop-opacity="1"/></linearGradient><filter id="dhf" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.5"/></filter></defs><circle cx="20.53" cy="45.64" r="14" fill="#10B981" opacity="0.25" filter="url(#dhf)"/><path d="M 60,18 A 42,42 0 1 1 20.53,45.64" fill="none" stroke="url(#dhg)" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="60" r="3" fill="#F4F6F8" opacity="0.85"/><circle cx="20.53" cy="45.64" r="6.5" fill="#10B981"/></svg><span>Datara Hub</span></a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">☰</button>
     <nav class="mainnav" id="mainnav">
       <a href="#practices" data-i18n="nav.practices">Practices</a>
@@ -98,7 +98,9 @@
       <p data-i18n="pr.intro">We combine engineering, business analysis and technical program leadership instead of handing every problem to a different vendor. Each practice below states its limits up front.</p>
     </div>
 
-    <article class="practice">
+    <div class="pgrid"><a class="p" href="#cap1"><span class="dot"></span><div class="n">01</div><h3 data-i18n="p1.t">Software Engineering</h3><p data-i18n="cap1.blurb">Internal tools, APIs and business apps, handed over with the source.</p></a><a class="p" href="#cap2"><span class="dot"></span><div class="n">02</div><h3 data-i18n="p2.t">AI &amp; Automation</h3><p data-i18n="cap2.blurb">Agentic assistants and reporting automation over your own data.</p></a><a class="p" href="#cap3"><span class="dot"></span><div class="n">03</div><h3 data-i18n="p3.t">Cybersecurity</h3><p data-i18n="cap3.blurb">Scoped web-app pentesting and risk governance, under authorisation.</p></a><a class="p" href="#cap4"><span class="dot"></span><div class="n">04</div><h3 data-i18n="p4.t">Data, Analytics &amp; Engineering</h3><p data-i18n="cap4.blurb">Pipelines, warehouse, dashboards and BI you can defend.</p></a><a class="p" href="#cap5"><span class="dot"></span><div class="n">05</div><h3 data-i18n="p5.t">Technical Delivery &amp; Account Leadership</h3><p data-i18n="cap5.blurb">Fractional technical program management and account leadership.</p></a><a class="p" href="#cap6"><span class="dot"></span><div class="n">06</div><h3 data-i18n="p6.t">Web &amp; Growth</h3><p data-i18n="cap6.blurb">Conversion sites, SEO and forms wired to your CRM or WhatsApp.</p></a></div>
+
+    <article class="practice" id="cap1">
       <div class="pnum">01</div>
       <div>
         <h3 class="ptitle" data-i18n="p1.t">Software Engineering</h3>
@@ -125,7 +127,7 @@
       </div>
     </article>
 
-    <article class="practice">
+    <article class="practice" id="cap2">
       <div class="pnum">02</div>
       <div>
         <h3 class="ptitle" data-i18n="p2.t">AI &amp; Automation</h3>
@@ -152,7 +154,7 @@
       </div>
     </article>
 
-    <article class="practice">
+    <article class="practice" id="cap3">
       <div class="pnum">03</div>
       <div>
         <h3 class="ptitle" data-i18n="p3.t">Cybersecurity</h3>
@@ -179,7 +181,7 @@
       </div>
     </article>
 
-    <article class="practice">
+    <article class="practice" id="cap4">
       <div class="pnum">04</div>
       <div>
         <h3 class="ptitle" data-i18n="p4.t">Data, Analytics &amp; Engineering</h3>
@@ -206,7 +208,7 @@
       </div>
     </article>
 
-    <article class="practice">
+    <article class="practice" id="cap5">
       <div class="pnum">05</div>
       <div>
         <h3 class="ptitle" data-i18n="p5.t">Technical Delivery &amp; Account Leadership</h3>
@@ -233,7 +235,7 @@
       </div>
     </article>
 
-    <article class="practice">
+    <article class="practice" id="cap6">
       <div class="pnum">06</div>
       <div>
         <h3 class="ptitle" data-i18n="p6.t">Web &amp; Growth</h3>
