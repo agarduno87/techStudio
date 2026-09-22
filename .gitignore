@@ -9,3 +9,23 @@ venv/
 .pytest_cache/
 node_modules/
 php/config.php
+
+# ── Privado de negocio ───────────────────────────────────────────────
+# El repositorio es PÚBLICO: nada de esto debe subir a GitHub.
+# Regla simple: TODO lo sensible (costos, finanzas, modelos de negocio,
+# estrategia, auditorías, cotizaciones) va dentro de /private/ y se queda
+# solo en tu computadora.
+/private/
+/cotizacion/
+
+# Red de seguridad por si algo sensible queda suelto fuera de /private/:
+# cualquier archivo cuyo nombre contenga estas palabras se ignora.
+*cotizacion*
+*cotización*
+auditoria*.md
+auditoría*.md
+*costos*
+*costeo*
+*financ*
+*estrategia*
+*modelo-negocio*
