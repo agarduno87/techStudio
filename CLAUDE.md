@@ -70,12 +70,24 @@ gratis, lo más simple es registrarlo ahí y tener todo en un lugar.
 
 ## El cotizador
 
-`cotizacion/cotizacion.html` — hoja de cotización de marca, autocontenida
-(un solo HTML, tipografías de Google Fonts con fallback). Editable en el
-navegador, guarda el borrador en `localStorage` (llave `datarahub-cotizacion-v1`),
-se imprime a PDF. Catálogo de servicios con los precios reales, moneda MXN/USD,
-IVA 16%, y todo lo monetario en formato peso. Diseño claro/papel a propósito
-(se imprime mejor) con acentos navy/esmeralda y el cometa.
+Hoja de cotización de marca, autocontenida (un solo HTML, tipografías de Google
+Fonts con fallback). Editable en el navegador, guarda el borrador en
+`localStorage` (llave `datarahub-cotizacion-v1`), se imprime a PDF. Catálogo de
+servicios con los precios reales, moneda MXN/USD, IVA 16% (con % junto al monto
+en el descuento), y todo lo monetario en formato peso. Diseño claro/papel a
+propósito (se imprime mejor) con acentos navy/esmeralda y el cometa.
+
+**Dónde vive:**
+- **Público en Pages:** `cotizador/index.html` → `/techStudio/cotizador/`. La
+  plantilla no trae secretos (las cotizaciones llenas viven en `localStorage`,
+  por navegador y por origen, nunca en el archivo). El nombre es `cotizador`
+  (sin "-cion") a propósito, para que el `.gitignore` no lo atrape.
+- **Privado local:** `cotizacion/` (guardados/PDFs) sigue ignorado.
+  `build_github_pages.py` excluye `cotizacion/` y `private/` del build.
+- **Artifact de Claude** (editable con la sesión): existe pero es finicky; la
+  URL de Pages es la estable.
+- Pendiente: moverlo a `datarahub.com/cotizacion/` con contraseña (cPanel
+  Directory Privacy) al migrar a Neubox.
 
 Trampas de impresión que ya se resolvieron (por si se vuelven a tocar):
 - La marca de agua (cometa de fondo) debe ir `position:absolute` con selector
@@ -86,7 +98,9 @@ Trampas de impresión que ya se resolvieron (por si se vuelven a tocar):
 - La ruta `file://`, fecha y número de página que salen al imprimir NO son del
   HTML: son el encabezado/pie del navegador. Se apagan con el check
   "Encabezados y pies de página" del diálogo de impresión.
-- La carpeta está en `.gitignore` (material comercial privado, ver abajo).
+- `localStorage` es por ORIGEN: los datos llenados en el archivo local
+  (`file://`), en Pages y en el artifact NO se comparten entre sí. Al cambiar
+  de URL se empieza en blanco (con el ejemplo).
 
 ## Trampas de este proyecto
 
@@ -161,5 +175,5 @@ El `--base` tiene que coincidir exactamente con el nombre del repositorio.
 - Cuando el dominio esté vivo: `python3 tools/set_domain.py https://datarahub.com`.
 - Publicar desde `/docs` en Settings → Pages (hoy publica la raíz del repo).
 - Editor de contenido para que Samuel también edite sin tocar código.
-- (Opcional) Versionar el cotizador para Samuel — hoy está en `cotizacion/`
-  pero ignorado por git.
+- El cotizador ya es público en Pages (`/techStudio/cotizador/`). Pendiente:
+  moverlo a `datarahub.com/cotizacion/` con contraseña al migrar a Neubox.

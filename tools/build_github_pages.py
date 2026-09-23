@@ -51,7 +51,8 @@ OUT = ROOT / "docs"
 
 # Nada de esto se publica: es codigo, originales de marca o secretos.
 BLOCKED_DIRS = {"api", "tools", "tests", "assets", "docs", ".git", ".venv",
-                "venv", "__pycache__", ".pytest_cache", "node_modules"}
+                "venv", "__pycache__", ".pytest_cache", "node_modules",
+                "cotizacion", "private"}
 BLOCKED_SUFFIX = {".py", ".sh", ".db", ".sqlite3", ".pyc", ".env", ".zip", ".xlsx", ".md"}
 BLOCKED_NAMES = {".env", ".env.example", ".gitignore", ".DS_Store", "_headers"}
 
