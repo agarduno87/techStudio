@@ -129,8 +129,14 @@
   .block .cap{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--emerald-ink); margin-bottom:9px}
   .notes textarea.f{font-size:12.5px; color:var(--ink-2); line-height:1.55}
   .terms{list-style:none; margin:0; padding:0; font-size:12px; color:var(--ink-2)}
-  .terms li{padding:5px 0 5px 16px; position:relative; border-bottom:1px dotted var(--line)}
-  .terms li::before{content:"—"; position:absolute; left:0; color:var(--emerald)}
+  .terms li{padding:5px 22px 5px 16px; position:relative; border-bottom:1px dotted var(--line)}
+  .terms li::before{content:"—"; position:absolute; left:0; top:5px; color:var(--emerald)}
+  .condf{font-size:12px; color:var(--ink-2); line-height:1.4; min-height:1.35em; outline:none; border-radius:3px; padding:1px 2px; white-space:pre-wrap; overflow-wrap:anywhere}
+  .condf:hover{background:var(--line-2)}
+  .condf:focus{background:#fff; box-shadow:0 0 0 1px var(--emerald)}
+  .condel{position:absolute; right:0; top:4px; border:0; background:transparent; color:#B7C2C0; cursor:pointer; font-size:14px; line-height:1; padding:0 2px; border-radius:4px}
+  .condel:hover{color:var(--danger); background:#FBEEEC}
+  .condadd{margin-top:9px}
 
   .signoff{margin-top:34px; display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:end}
   .sig .rule{border-top:1px solid var(--ink); padding-top:7px; font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2)}
@@ -152,7 +158,7 @@
     body{background:#fff; padding:0}
     html,body{height:auto}
     .sheet-wrap,.sheet{margin-top:0 !important; padding-top:0 !important}
-    .toolbar,.hint,.addbar,.rowdel,.delcell{display:none !important}
+    .toolbar,.hint,.addbar,.rowdel,.delcell,.condel,.condadd{display:none !important}
     .sheet-wrap{max-width:none; margin:0; padding:0}
     .sheet{border:0; border-radius:0; box-shadow:none; padding:0; display:flex; flex-direction:column; min-height:255mm}
     .sheet > .watermark{opacity:.04}
@@ -174,7 +180,7 @@
     .totrow.grand{margin-top:6px; padding:10px 16px}
     .notes{margin-top:10px}
     .terms li{padding:2px 0 2px 16px}
-    .signoff{margin-top:auto; padding-top:18px}   /* empuja firmas + pie al fondo, como footer */
+    .signoff{margin-top:auto; padding-top:12px}   /* empuja firmas + pie al fondo, como footer */
     .footer{margin-top:14px; padding-top:9px}
     /* No partir estos bloques a la mitad entre páginas */
     .signoff,.footer,.totals,tbody tr{break-inside:avoid}
@@ -290,12 +296,8 @@
       </div>
       <div class="block">
         <div class="cap">Condiciones</div>
-        <ul class="terms">
-          <li>Precios en la moneda indicada; el monto exacto sale del diagnóstico.</li>
-          <li>Alcance acotado por escrito antes de arrancar.</li>
-          <li>Anticipo 50% para iniciar, 50% contra entrega.</li>
-          <li>Código, documentación y credenciales son del cliente al final.</li>
-        </ul>
+        <ul class="terms" id="terms"></ul>
+        <button class="addbtn condadd" id="addcond">+ Agregar condición</button>
       </div>
     </section>
 
@@ -347,7 +349,13 @@ function defaults(){
       {concepto:CATALOG.launch.concepto, descripcion:CATALOG.launch.descripcion, cantidad:1, precio:15000},
       {concepto:"Automatización de reportes", descripcion:"Flujo automatizado que sustituye el reporte manual semanal del equipo (ejemplo — reemplázalo).", cantidad:1, precio:28000}
     ],
-    notas:"Cotización sujeta a diagnóstico. Tiempos de entrega y entregables se detallan en la propuesta de alcance. Cualquier trabajo fuera del alcance acordado se cotiza por separado."
+    notas:"Cotización sujeta a diagnóstico. Tiempos de entrega y entregables se detallan en la propuesta de alcance. Cualquier trabajo fuera del alcance acordado se cotiza por separado.",
+    condiciones:[
+      "Los precios están expresados en pesos mexicanos (MXN).",
+      "Condiciones de pago: 50% de anticipo para iniciar el proyecto y el 50% restante contra entrega.",
+      "El código fuente, la documentación y las credenciales de acceso se entregarán al cliente al finalizar el proyecto y serán de su propiedad.",
+      "Cualquier servicio o requerimiento adicional no contemplado en el alcance acordado se cotizará por separado."
+    ]
   };
 }
 
@@ -362,6 +370,7 @@ function load(){
       // Rellenar campos nuevos (emisor/cliente) sin pisar lo que ya guardaste.
       s.emisor  = Object.assign({}, d.emisor,  s.emisor  || {});
       s.cliente = Object.assign({}, d.cliente, s.cliente || {});
+      if (!Array.isArray(s.condiciones)) s.condiciones = d.condiciones.slice();
       return s;
     }
   }catch(e){}
@@ -427,6 +436,7 @@ function bindAll(){
   });
 
   $("addrow").addEventListener("click", function(){ state.rows.push({concepto:"", descripcion:"", cantidad:1, precio:0}); renderRows(); save(); });
+  $("addcond").addEventListener("click", function(){ state.condiciones.push(""); renderCond(); save(); });
   $("catalog").addEventListener("change", function(){
     var it = CATALOG[this.value]; this.value="";
     if(!it) return;
@@ -439,7 +449,7 @@ function bindAll(){
   $("resetbtn").addEventListener("click", function(){
     if(!confirm("¿Reiniciar la cotización a la plantilla de ejemplo? Se borra lo que escribiste en este navegador.")) return;
     try{ localStorage.removeItem(KEY); }catch(e){}
-    state = defaults(); rebind(); renderRows();
+    state = defaults(); rebind(); renderRows(); renderCond();
   });
 }
 
@@ -503,6 +513,19 @@ function renderRows(){
   recalc();
 }
 
+/* ---- condiciones (lista editable) ---- */
+function renderCond(){
+  var ul = $("terms"); if(!ul) return; ul.innerHTML="";
+  state.condiciones.forEach(function(text, i){
+    var li = document.createElement("li");
+    li.innerHTML = '<button class="condel" title="Quitar" aria-label="Quitar condición">&times;</button><div class="condf" contenteditable="true"></div>';
+    var ce = li.querySelector(".condf"); ce.textContent = text || "";
+    ce.addEventListener("input", function(){ state.condiciones[i]=ce.textContent; save(); });
+    li.querySelector("button").addEventListener("click", function(){ state.condiciones.splice(i,1); renderCond(); save(); });
+    ul.appendChild(li);
+  });
+}
+
 function recalc(){
   var sub=0;
   state.rows.forEach(function(r){ sub += (parseFloat(r.cantidad)||0)*(parseFloat(r.precio)||0); });
@@ -542,4 +565,5 @@ function recalc(){
 bindAll();
 rebind();
 renderRows();
+renderCond();
 </script>
