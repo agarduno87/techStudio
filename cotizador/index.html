@@ -89,6 +89,13 @@
   textarea.f{resize:vertical; min-height:1.6em; line-height:1.45; overflow:hidden}
   input[type=number].f{-moz-appearance:textfield}
   input[type=number].f::-webkit-outer-spin-button,input[type=number].f::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+  /* Campos multilínea editables (crecen exacto a cualquier ancho; imprimen bien) */
+  .f-ce{outline:none; white-space:pre-wrap; overflow-wrap:anywhere; border-radius:3px; padding:1px 2px}
+  .f-ce:hover{background:var(--line-2)}
+  .f-ce:focus{background:#fff; box-shadow:0 0 0 1px var(--emerald)}
+  .f-ce:empty::before{content:attr(data-ph); color:#9aa6ad}
+  .desc-ce{margin-top:2px; font-size:13px; color:var(--ink-2); line-height:1.45; min-height:1.3em}
+  .notes-ce{font-size:12.5px; color:var(--ink-2); line-height:1.55; min-height:3.4em}
 
   /* Tabla de conceptos */
   .tablebox{margin-top:28px; overflow-x:auto}
@@ -292,7 +299,7 @@
     <section class="notes">
       <div class="block">
         <div class="cap">Notas</div>
-        <textarea class="f" id="notas" rows="4"></textarea>
+        <div class="f f-ce notes-ce" id="notas" contenteditable="true" data-ph="Notas de la cotización…"></div>
       </div>
       <div class="block">
         <div class="cap">Condiciones</div>
@@ -412,8 +419,8 @@ function bindAll(){
   bindText("cl_direccion", function(){return state.cliente.direccion;}, function(v){state.cliente.direccion=v;});
 
   var notas = $("notas");
-  notas.value = state.notas || "";
-  notas.addEventListener("input", function(){ state.notas=notas.value; autosize(notas); save(); });
+  notas.textContent = state.notas || "";
+  notas.addEventListener("input", function(){ state.notas=notas.textContent; save(); });
 
   var desc = $("descuento");
   // Muestra moneda formateada; al enfocar, número pelón para editar; al salir, reformatea.
@@ -447,9 +454,13 @@ function bindAll(){
 
   $("printbtn").addEventListener("click", function(){ window.print(); });
   $("resetbtn").addEventListener("click", function(){
-    if(!confirm("¿Reiniciar la cotización a la plantilla de ejemplo? Se borra lo que escribiste en este navegador.")) return;
-    try{ localStorage.removeItem(KEY); }catch(e){}
-    state = defaults(); rebind(); renderRows(); renderCond();
+    if(!confirm("¿Vaciar conceptos, montos y datos del cliente para una cotización nueva?\n\nSe CONSERVAN tu emisor, condiciones, notas, folio, moneda e IVA.")) return;
+    // Reset selectivo: solo lo que cambia por cliente. Lo demás (info tuya y de la
+    // cotización) se mantiene.
+    state.rows = [{concepto:"", descripcion:"", cantidad:1, precio:0}];
+    state.descuento = 0;
+    state.cliente = {empresa:"", contacto:"", correo:"", telefono:"", direccion:""};
+    save(); rebind(); renderRows();
   });
 }
 
@@ -462,7 +473,7 @@ function rebind(){
   $("cl_empresa").value=state.cliente.empresa||""; $("cl_contacto").value=state.cliente.contacto||"";
   $("cl_correo").value=state.cliente.correo||""; $("cl_telefono").value=state.cliente.telefono||"";
   $("cl_direccion").value=state.cliente.direccion||"";
-  $("notas").value=state.notas||""; autosize($("notas"));
+  $("notas").textContent=state.notas||"";
   $("descuento").value=state.descuento||0;
   $("ivachk").checked=!!state.iva;
   $("curseg").querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", x.dataset.cur===state.currency?"true":"false"); });
@@ -480,11 +491,11 @@ function renderRows(){
     tr.appendChild(del);
 
     var c = document.createElement("td"); c.className="c-concepto";
-    c.innerHTML = '<input class="f concepto-t" placeholder="Concepto"><textarea class="f" rows="1" placeholder="Descripción"></textarea>';
-    var ci=c.querySelector("input"), cd=c.querySelector("textarea");
-    ci.value=row.concepto||""; cd.value=row.descripcion||"";
+    c.innerHTML = '<input class="f concepto-t" placeholder="Concepto"><div class="f-ce desc-ce" contenteditable="true" data-ph="Descripción"></div>';
+    var ci=c.querySelector("input"), cd=c.querySelector(".desc-ce");
+    ci.value=row.concepto||""; cd.textContent=row.descripcion||"";
     ci.addEventListener("input", function(){ row.concepto=ci.value; save(); });
-    cd.addEventListener("input", function(){ row.descripcion=cd.value; autosize(cd); save(); });
+    cd.addEventListener("input", function(){ row.descripcion=cd.textContent; save(); });
     tr.appendChild(c);
 
     var q = document.createElement("td"); q.className="c-num cell-num";
@@ -508,7 +519,6 @@ function renderRows(){
     tr.appendChild(impTd);
 
     tb.appendChild(tr);
-    autosize(cd);
   });
   recalc();
 }
