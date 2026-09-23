@@ -245,11 +245,12 @@
       </div>
       <div class="party">
         <div class="cap">Preparado para</div>
-        <div class="line strong"><input class="f" id="cl_empresa"></div>
-        <div class="line"><input class="f" id="cl_contacto"></div>
-        <div class="line"><input class="f" id="cl_correo"></div>
-        <div class="line"><input class="f" id="cl_telefono"></div>
-        <div class="line"><input class="f" id="cl_direccion"></div>
+        <div class="line strong"><input class="f" id="cl_nombre" placeholder="Nombre / Empresa"></div>
+        <div class="line"><input class="f" id="cl_razon" placeholder="Razón social"></div>
+        <div class="line"><input class="f" id="cl_rfc" placeholder="RFC"></div>
+        <div class="line"><input class="f" id="cl_direccion" placeholder="Dirección"></div>
+        <div class="line"><input class="f" id="cl_correo" placeholder="Correo"></div>
+        <div class="line"><input class="f" id="cl_webtel" placeholder="Web · teléfono"></div>
       </div>
     </section>
 
@@ -350,7 +351,7 @@ function defaults(){
     fecha:fmtDate(hoy),
     vigencia:"15 días · vence " + fmtDate(vig),
     emisor:{nombre:"Datara Hub", razon:"", rfc:"", direccion:"Santiago de Querétaro, Querétaro, México", correo:"ing.antoniogz@gmail.com", webtel:"datarahub.com · +52 961 215 5515"},
-    cliente:{empresa:"Empresa Ejemplo, S.A. de C.V.", contacto:"Nombre del contacto", correo:"contacto@empresa.com", telefono:"+52 442 000 0000", direccion:"Ciudad, Estado"},
+    cliente:{nombre:"Empresa Ejemplo, S.A. de C.V.", razon:"", rfc:"", direccion:"Ciudad, Estado, México", correo:"contacto@empresa.com", webtel:"empresa.com · +52 442 000 0000"},
     currency:"MXN", iva:true, descuento:0,
     rows:[
       {concepto:CATALOG.launch.concepto, descripcion:CATALOG.launch.descripcion, cantidad:1, precio:15000},
@@ -376,7 +377,16 @@ function load(){
       var s = JSON.parse(raw);
       // Rellenar campos nuevos (emisor/cliente) sin pisar lo que ya guardaste.
       s.emisor  = Object.assign({}, d.emisor,  s.emisor  || {});
-      s.cliente = Object.assign({}, d.cliente, s.cliente || {});
+      // Cliente: mismo esquema que el emisor. Migra el viejo (empresa/telefono) al nuevo.
+      var oc = s.cliente || {};
+      s.cliente = {
+        nombre:    oc.nombre    !== undefined ? oc.nombre    : (oc.empresa || ""),
+        razon:     oc.razon     || "",
+        rfc:       oc.rfc       || "",
+        direccion: oc.direccion || "",
+        correo:    oc.correo    || "",
+        webtel:    oc.webtel    !== undefined ? oc.webtel    : (oc.telefono || "")
+      };
       if (!Array.isArray(s.condiciones)) s.condiciones = d.condiciones.slice();
       return s;
     }
@@ -412,11 +422,12 @@ function bindAll(){
   bindText("em_direccion", function(){return state.emisor.direccion;}, function(v){state.emisor.direccion=v;});
   bindText("em_correo", function(){return state.emisor.correo;}, function(v){state.emisor.correo=v;});
   bindText("em_webtel", function(){return state.emisor.webtel;}, function(v){state.emisor.webtel=v;});
-  bindText("cl_empresa", function(){return state.cliente.empresa;}, function(v){state.cliente.empresa=v;});
-  bindText("cl_contacto", function(){return state.cliente.contacto;}, function(v){state.cliente.contacto=v;});
-  bindText("cl_correo", function(){return state.cliente.correo;}, function(v){state.cliente.correo=v;});
-  bindText("cl_telefono", function(){return state.cliente.telefono;}, function(v){state.cliente.telefono=v;});
+  bindText("cl_nombre", function(){return state.cliente.nombre;}, function(v){state.cliente.nombre=v;});
+  bindText("cl_razon", function(){return state.cliente.razon;}, function(v){state.cliente.razon=v;});
+  bindText("cl_rfc", function(){return state.cliente.rfc;}, function(v){state.cliente.rfc=v;});
   bindText("cl_direccion", function(){return state.cliente.direccion;}, function(v){state.cliente.direccion=v;});
+  bindText("cl_correo", function(){return state.cliente.correo;}, function(v){state.cliente.correo=v;});
+  bindText("cl_webtel", function(){return state.cliente.webtel;}, function(v){state.cliente.webtel=v;});
 
   var notas = $("notas");
   notas.textContent = state.notas || "";
@@ -459,7 +470,7 @@ function bindAll(){
     // cotización) se mantiene.
     state.rows = [{concepto:"", descripcion:"", cantidad:1, precio:0}];
     state.descuento = 0;
-    state.cliente = {empresa:"", contacto:"", correo:"", telefono:"", direccion:""};
+    state.cliente = {nombre:"", razon:"", rfc:"", direccion:"", correo:"", webtel:""};
     save(); rebind(); renderRows();
   });
 }
@@ -470,9 +481,9 @@ function rebind(){
   $("em_nombre").value=state.emisor.nombre||""; $("em_razon").value=state.emisor.razon||"";
   $("em_rfc").value=state.emisor.rfc||""; $("em_direccion").value=state.emisor.direccion||"";
   $("em_correo").value=state.emisor.correo||""; $("em_webtel").value=state.emisor.webtel||"";
-  $("cl_empresa").value=state.cliente.empresa||""; $("cl_contacto").value=state.cliente.contacto||"";
-  $("cl_correo").value=state.cliente.correo||""; $("cl_telefono").value=state.cliente.telefono||"";
-  $("cl_direccion").value=state.cliente.direccion||"";
+  $("cl_nombre").value=state.cliente.nombre||""; $("cl_razon").value=state.cliente.razon||"";
+  $("cl_rfc").value=state.cliente.rfc||""; $("cl_direccion").value=state.cliente.direccion||"";
+  $("cl_correo").value=state.cliente.correo||""; $("cl_webtel").value=state.cliente.webtel||"";
   $("notas").textContent=state.notas||"";
   $("descuento").value=state.descuento||0;
   $("ivachk").checked=!!state.iva;
