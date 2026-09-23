@@ -223,12 +223,12 @@
     <section class="parties">
       <div class="party">
         <div class="cap">Emitido por</div>
-        <div class="line strong">Datara Hub</div>
+        <div class="line strong"><input class="f" id="em_nombre"></div>
         <div class="line"><input class="f" id="em_razon" placeholder="Razón social (por definir)"></div>
         <div class="line"><input class="f" id="em_rfc" placeholder="RFC (por definir)"></div>
-        <div class="line">Santiago de Querétaro, Querétaro, México</div>
-        <div class="line">ing.antoniogz@gmail.com</div>
-        <div class="line">datarahub.com · +52 961 215 5515</div>
+        <div class="line"><input class="f" id="em_direccion"></div>
+        <div class="line"><input class="f" id="em_correo"></div>
+        <div class="line"><input class="f" id="em_webtel"></div>
       </div>
       <div class="party">
         <div class="cap">Preparado para</div>
@@ -340,7 +340,7 @@ function defaults(){
     folio:"COT-" + yy + "-001",
     fecha:fmtDate(hoy),
     vigencia:"15 días · vence " + fmtDate(vig),
-    emisor:{razon:"", rfc:""},
+    emisor:{nombre:"Datara Hub", razon:"", rfc:"", direccion:"Santiago de Querétaro, Querétaro, México", correo:"ing.antoniogz@gmail.com", webtel:"datarahub.com · +52 961 215 5515"},
     cliente:{empresa:"Empresa Ejemplo, S.A. de C.V.", contacto:"Nombre del contacto", correo:"contacto@empresa.com", telefono:"+52 442 000 0000", direccion:"Ciudad, Estado"},
     currency:"MXN", iva:true, descuento:0,
     rows:[
@@ -354,8 +354,18 @@ function defaults(){
 var state = load();
 
 function load(){
-  try{ var raw = localStorage.getItem(KEY); if(raw){ return JSON.parse(raw); } }catch(e){}
-  return defaults();
+  var d = defaults();
+  try{
+    var raw = localStorage.getItem(KEY);
+    if(raw){
+      var s = JSON.parse(raw);
+      // Rellenar campos nuevos (emisor/cliente) sin pisar lo que ya guardaste.
+      s.emisor  = Object.assign({}, d.emisor,  s.emisor  || {});
+      s.cliente = Object.assign({}, d.cliente, s.cliente || {});
+      return s;
+    }
+  }catch(e){}
+  return d;
 }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
 
@@ -380,8 +390,12 @@ function bindAll(){
   bindText("folio", function(){return state.folio;}, function(v){state.folio=v;});
   bindText("fecha", function(){return state.fecha;}, function(v){state.fecha=v;});
   bindText("vigencia", function(){return state.vigencia;}, function(v){state.vigencia=v;});
+  bindText("em_nombre", function(){return state.emisor.nombre;}, function(v){state.emisor.nombre=v;});
   bindText("em_razon", function(){return state.emisor.razon;}, function(v){state.emisor.razon=v;});
   bindText("em_rfc", function(){return state.emisor.rfc;}, function(v){state.emisor.rfc=v;});
+  bindText("em_direccion", function(){return state.emisor.direccion;}, function(v){state.emisor.direccion=v;});
+  bindText("em_correo", function(){return state.emisor.correo;}, function(v){state.emisor.correo=v;});
+  bindText("em_webtel", function(){return state.emisor.webtel;}, function(v){state.emisor.webtel=v;});
   bindText("cl_empresa", function(){return state.cliente.empresa;}, function(v){state.cliente.empresa=v;});
   bindText("cl_contacto", function(){return state.cliente.contacto;}, function(v){state.cliente.contacto=v;});
   bindText("cl_correo", function(){return state.cliente.correo;}, function(v){state.cliente.correo=v;});
@@ -432,7 +446,9 @@ function bindAll(){
 function rebind(){
   // recolocar valores en los inputs ya existentes
   ["folio","fecha","vigencia"].forEach(function(k){ $(k).value = state[k]||""; });
-  $("em_razon").value=state.emisor.razon||""; $("em_rfc").value=state.emisor.rfc||"";
+  $("em_nombre").value=state.emisor.nombre||""; $("em_razon").value=state.emisor.razon||"";
+  $("em_rfc").value=state.emisor.rfc||""; $("em_direccion").value=state.emisor.direccion||"";
+  $("em_correo").value=state.emisor.correo||""; $("em_webtel").value=state.emisor.webtel||"";
   $("cl_empresa").value=state.cliente.empresa||""; $("cl_contacto").value=state.cliente.contacto||"";
   $("cl_correo").value=state.cliente.correo||""; $("cl_telefono").value=state.cliente.telefono||"";
   $("cl_direccion").value=state.cliente.direccion||"";
