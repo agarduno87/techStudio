@@ -12,7 +12,11 @@
 (function () {
   "use strict";
 
-  var API_ENDPOINT = "/api/contact";
+  /* En local (desarrollo con FastAPI) el endpoint es /api/contact; en producción
+     (Neubox, sin backend Python) es el reemplazo en PHP /contact.php. */
+  var API_ENDPOINT = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+    ? "/api/contact"
+    : "/contact.php";
   var REQUEST_TIMEOUT_MS = 15000;
   var MIN_FILL_SECONDS = 3;
   var WORKING_WEEKS = 48;

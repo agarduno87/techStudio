@@ -208,7 +208,7 @@ def main() -> None:
     if args.domain:
         (OUT / "CNAME").write_text(args.domain.strip() + "\n", encoding="utf-8")
 
-    mail = args.mailto or "hello@example.com"
+    mail = args.mailto or "hola@datarahub.com"
     (OUT / "pages-form.js").write_text(FORM_SHIM.replace("__MAILTO__", mail), encoding="utf-8")
     tag = f'<script src="{base}/pages-form.js" defer></script>'
     for page in OUT.rglob("*.html"):

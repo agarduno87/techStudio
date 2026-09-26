@@ -3,23 +3,22 @@
  * Datara Hub — endpoint de contacto para hosting cPanel (Neubox).
  * ------------------------------------------------------------------
  * Reemplazo directo de POST /api/contact (api/main.py) para cuando el sitio
- * viva en Neubox con PHP + MySQL + correo del dominio, sin proceso Python.
+ * viva en Neubox con PHP + correo del dominio, sin proceso Python.
  *
  * El frontend (app.js) manda un JSON a este archivo y espera:
  *   2xx  -> enviado           400  -> demasiado rápido (trampa de tiempo)
  *   422  -> campos inválidos   429  -> demasiados envíos (rate limit)
- * Para usarlo, en app.js cambia:  var API_ENDPOINT = "/contact.php";
+ * Para usarlo, en app.js:  var API_ENDPOINT = "/contact.php";
  *
- * Mismos controles que el backend FastAPI (AAIF security-standard):
- *   Defensa en profundidad .. honeypot + trampa de tiempo + rate limit + validación
- *   Validación de entrada ... longitud máxima en todos los campos, práctica en lista blanca
- *   Mínimo privilegio ....... solo acepta POST; nada de lectura pública
- *   Gestión de secretos ..... credenciales en config.php, nunca en este archivo ni en el repo
- *   Logging ................. sin cuerpo del mensaje ni correo completo; IP anonimizada
- *   Correo .................. texto plano, asunto solo con valores de lista blanca,
- *                             cabeceras sin CR/LF (anti header-injection)
+ * BASE DE DATOS OPCIONAL
+ * ----------------------
+ * El correo funciona SIN MySQL. Si en config.php llenas db_host/db_name/db_user,
+ * además se guarda cada lead en la tabla `leads` (se crea sola). Si no, solo
+ * se envía el correo. El rate-limit usa un archivo temporal, no la base.
  *
- * Copia config.sample.php a config.php y llénalo en el servidor. Ver php/README.md.
+ * Controles (AAIF security-standard): honeypot + trampa de tiempo + rate limit
+ * + validación con longitudes máximas + práctica en lista blanca + IP anonimizada
+ * + correo en texto plano con cabeceras sin CR/LF. Secretos en config.php.
  */
 
 declare(strict_types=1);
@@ -37,13 +36,15 @@ if (!is_file($cfgPath)) {
 }
 $cfg = require $cfgPath;
 
-$MIN_FILL_SECONDS       = 3;
-$MAX_BODY_BYTES         = 16 * 1024;
-$RATE_LIMIT_MAX         = (int)($cfg['rate_limit_max'] ?? 5);
-$RATE_LIMIT_WINDOW      = (int)($cfg['rate_limit_window'] ?? 3600);
+$MIN_FILL_SECONDS  = 3;
+$MAX_BODY_BYTES    = 16 * 1024;
+$RATE_LIMIT_MAX    = (int)($cfg['rate_limit_max'] ?? 5);
+$RATE_LIMIT_WINDOW = (int)($cfg['rate_limit_window'] ?? 3600);
 
-// Debe coincidir EXACTO con los value="" de los <option> en index.html
-// y con ALLOWED_PRACTICES en api/main.py.
+// ¿Hay base de datos configurada? Si no, el guardado se omite (el correo sigue).
+$dbConfigured = !empty($cfg['db_host']) && !empty($cfg['db_name']) && !empty($cfg['db_user']);
+
+// Debe coincidir EXACTO con los value="" de los <option> en index.html.
 $ALLOWED_PRACTICES = [
     'Software Engineering',
     'AI & Automation',
@@ -56,7 +57,7 @@ $ALLOWED_PRACTICES = [
 $SUPPORTED_LOCALES = ['en', 'es'];
 
 // --------------------------------------------------------------------------
-// Utilidades de respuesta
+// Utilidades
 // --------------------------------------------------------------------------
 function respond(int $code, array $body): void
 {
@@ -85,6 +86,39 @@ function has_control_chars(string $s): bool
     return preg_match('/[\x00-\x08\x0B\x0C\x0E-\x1F]/', $s) === 1;
 }
 
+/**
+ * Rate limit basado en archivo temporal (sin base de datos). Guarda las marcas
+ * de tiempo de cada IP (hasheada) en un archivo dentro del tmp del sistema.
+ * Si no puede escribir el archivo, NO bloquea (mejor dejar pasar que romper).
+ */
+function rate_limited(string $ipHash, int $max, int $window): bool
+{
+    $dir = sys_get_temp_dir() . '/datarahub_rate';
+    if (!is_dir($dir)) { @mkdir($dir, 0700, true); }
+    $file = $dir . '/' . $ipHash;
+    $now = time();
+    $cutoff = $now - $window;
+
+    $fp = @fopen($file, 'c+');
+    if ($fp === false) { return false; }
+    @flock($fp, LOCK_EX);
+    $raw = stream_get_contents($fp);
+    $hits = [];
+    foreach (explode("\n", (string)$raw) as $line) {
+        $t = (int)trim($line);
+        if ($t >= $cutoff) { $hits[] = $t; }
+    }
+    $blocked = count($hits) >= $max;
+    if (!$blocked) { $hits[] = $now; }
+    rewind($fp);
+    ftruncate($fp, 0);
+    fwrite($fp, implode("\n", $hits));
+    fflush($fp);
+    @flock($fp, LOCK_UN);
+    fclose($fp);
+    return $blocked;
+}
+
 // --------------------------------------------------------------------------
 // Método y tamaño
 // --------------------------------------------------------------------------
@@ -108,8 +142,7 @@ if (!is_array($data)) {
 }
 
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-// Detrás del proxy de Neubox, el cliente real llega en X-Forwarded-For.
-if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {   // detrás del proxy de Neubox
     $ip = trim(explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0]);
 }
 
@@ -134,63 +167,13 @@ if ($renderedAt > 0) {
 }
 
 // --------------------------------------------------------------------------
-// Conexión a MySQL (PDO). También sirve para el rate limit.
+// 3) Rate limit (archivo temporal, sin base de datos). Hash de la IP con salt.
 // --------------------------------------------------------------------------
-try {
-    $pdo = new PDO(
-        sprintf('mysql:host=%s;dbname=%s;charset=utf8mb4', $cfg['db_host'], $cfg['db_name']),
-        $cfg['db_user'],
-        $cfg['db_pass'],
-        [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-        ]
-    );
-} catch (Throwable $e) {
-    error_log('contact.php: DB connect falló: ' . $e->getMessage());
-    respond(500, ['detail' => 'Server error']);
-}
-
-// Tablas idempotentes: existir no cuesta, y evita un paso manual olvidable.
-// (El esquema también está en php/schema.sql por si prefieres crearlas a mano.)
-$pdo->exec(
-    'CREATE TABLE IF NOT EXISTS leads (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        company VARCHAR(120) NOT NULL,
-        email VARCHAR(254) NOT NULL,
-        practice VARCHAR(80) NOT NULL,
-        message TEXT NOT NULL,
-        locale VARCHAR(10) NOT NULL DEFAULT "en",
-        ip_prefix VARCHAR(64)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
-);
-$pdo->exec(
-    'CREATE TABLE IF NOT EXISTS form_hits (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        ip_hash CHAR(64) NOT NULL,
-        ts INT NOT NULL,
-        INDEX idx_ip_ts (ip_hash, ts)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
-);
-
-// --------------------------------------------------------------------------
-// 3) Rate limit — N envíos por ventana y por IP. Se guarda un HASH de la IP,
-//    nunca la IP en claro (salt en config.php).
-// --------------------------------------------------------------------------
-$now     = time();
-$ipHash  = hash('sha256', ($cfg['ip_salt'] ?? '') . $ip);
-$windowStart = $now - $RATE_LIMIT_WINDOW;
-
-$pdo->prepare('DELETE FROM form_hits WHERE ts < ?')->execute([$windowStart]);
-$stmt = $pdo->prepare('SELECT COUNT(*) AS c FROM form_hits WHERE ip_hash = ? AND ts >= ?');
-$stmt->execute([$ipHash, $windowStart]);
-if ((int)$stmt->fetch()['c'] >= $RATE_LIMIT_MAX) {
+$ipHash = hash('sha256', ($cfg['ip_salt'] ?? '') . $ip);
+if (rate_limited($ipHash, $RATE_LIMIT_MAX, $RATE_LIMIT_WINDOW)) {
     error_log('contact.php: rate limited ip=' . anonymise($ip));
     respond(429, ['detail' => 'Too many submissions']);
 }
-$pdo->prepare('INSERT INTO form_hits (ip_hash, ts) VALUES (?, ?)')->execute([$ipHash, $now]);
 
 // --------------------------------------------------------------------------
 // 4) Validación — toda cadena con longitud máxima explícita.
@@ -227,30 +210,54 @@ if ($errors) {
 }
 
 // --------------------------------------------------------------------------
-// 5) Guardar el lead
+// 5) Guardar el lead — SOLO si hay base de datos configurada. Best-effort:
+//    si la base falla, el correo se envía igual (no rompemos el envío).
 // --------------------------------------------------------------------------
-try {
-    $stmt = $pdo->prepare(
-        'INSERT INTO leads (company, email, practice, message, locale, ip_prefix)
-         VALUES (?, ?, ?, ?, ?, ?)'
-    );
-    $stmt->execute([$company, $email, $practice, $message, $locale, anonymise($ip)]);
-} catch (Throwable $e) {
-    error_log('contact.php: INSERT falló: ' . $e->getMessage());
-    respond(500, ['detail' => 'Server error']);
+if ($dbConfigured) {
+    try {
+        $pdo = new PDO(
+            sprintf('mysql:host=%s;dbname=%s;charset=utf8mb4', $cfg['db_host'], $cfg['db_name']),
+            $cfg['db_user'],
+            $cfg['db_pass'],
+            [
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES   => false,
+            ]
+        );
+        $pdo->exec(
+            'CREATE TABLE IF NOT EXISTS leads (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                company VARCHAR(120) NOT NULL,
+                email VARCHAR(254) NOT NULL,
+                practice VARCHAR(80) NOT NULL,
+                message TEXT NOT NULL,
+                locale VARCHAR(10) NOT NULL DEFAULT "en",
+                ip_prefix VARCHAR(64)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
+        );
+        $stmt = $pdo->prepare(
+            'INSERT INTO leads (company, email, practice, message, locale, ip_prefix)
+             VALUES (?, ?, ?, ?, ?, ?)'
+        );
+        $stmt->execute([$company, $email, $practice, $message, $locale, anonymise($ip)]);
+    } catch (Throwable $e) {
+        // La base es best-effort: se registra y se sigue al correo.
+        error_log('contact.php: guardado en BD falló (el correo sigue): ' . $e->getMessage());
+    }
 }
 
 // --------------------------------------------------------------------------
-// 6) Aviso por correo — texto plano. El asunto solo usa la práctica (lista
-//    blanca). Las cabeceras se sanean contra inyección de CR/LF.
+// 6) Aviso por correo — texto plano. Asunto solo con la práctica (lista blanca).
+//    Cabeceras saneadas contra inyección de CR/LF.
 // --------------------------------------------------------------------------
 $mailTo   = (string)($cfg['mail_to'] ?? '');
 $mailFrom = (string)($cfg['mail_from'] ?? '');
+$mailSent = false;
 if ($mailTo !== '' && $mailFrom !== '') {
-    // El correo del prospecto ya está validado, pero se recorta cualquier
-    // salto de línea antes de meterlo en Reply-To por doble seguridad.
-    $replyTo = preg_replace('/[\r\n]+/', ' ', $email);
-    $subject = '[Website] ' . $practice;              // práctica = lista blanca
+    $replyTo = preg_replace('/[\r\n]+/', ' ', $email);   // anti header-injection
+    $subject = '[Website] ' . $practice;                 // práctica = lista blanca
 
     $body = "New enquiry from the website\n\n"
           . "Company:  {$company}\n"
@@ -266,18 +273,17 @@ if ($mailTo !== '' && $mailFrom !== '') {
         'X-Mailer: datarahub-contact',
     ]);
 
-    // El envelope-from (-f) mejora la entrega y el SPF en cPanel.
-    $ok = @mail($mailTo, $subject, $body, $headers, '-f' . $mailFrom);
-    if (!$ok) {
-        // El lead ya quedó guardado; el correo es best-effort.
-        error_log('contact.php: mail() no pudo enviar (lead guardado igual)');
+    $mailSent = @mail($mailTo, $subject, $body, $headers, '-f' . $mailFrom);
+    if (!$mailSent) {
+        error_log('contact.php: mail() no pudo enviar');
     }
 }
 
 // Log sin PII: ni el correo completo ni el cuerpo del mensaje.
 error_log(sprintf(
-    'contact.php: lead stored practice=%s locale=%s domain=%s ip=%s',
-    $practice, $locale, substr(strrchr($email, '@') ?: '@', 1), anonymise($ip)
+    'contact.php: lead practice=%s locale=%s domain=%s stored=%s mailed=%s ip=%s',
+    $practice, $locale, substr(strrchr($email, '@') ?: '@', 1),
+    $dbConfigured ? 'try' : 'no', $mailSent ? 'yes' : 'no', anonymise($ip)
 ));
 
 respond(201, ['status' => 'ok']);
